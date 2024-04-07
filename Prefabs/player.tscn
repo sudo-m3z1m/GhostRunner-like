@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bljjoykcp0swp"]
+
+[ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/state_machine.gd" id="2_ya1ud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
+size = Vector3(1, 2.27246, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_p0jtv")
+max_speed = 20.0
+default_fov = 90.0
+camera_clamp_degrees = 90.0
+jump_strength = 25.0
+acceleration_weight = 0.1
+gravity = 1.2
+sensintivity = 0.001
+dash_speed = 60.0
+max_angle = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gsifa")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(1, 2.24707, 1)
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_qeet4")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_ya1ud")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+
+[node name="Moving" type="Node" parent="StateMachine"]
+
+[node name="Jump" type="Node" parent="StateMachine"]
