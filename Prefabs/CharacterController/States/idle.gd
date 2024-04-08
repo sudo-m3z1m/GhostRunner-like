@@ -13,6 +13,7 @@ func update_state(delta: float) -> void:
 	target.move_and_slide()
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
-	if is_next_state_valid(next_state):
-		return true
-	return false
+	return true
+	#if is_next_state_valid(next_state):
+		#return true
+	#return false

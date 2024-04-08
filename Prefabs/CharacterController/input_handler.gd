@@ -52,6 +52,6 @@ func get_action(action: String) -> void:
 		"Space":
 			state_machine.change_state(StateMachine.STATES.JUMP)
 		"Shift":
-			pass
+			state_machine.change_state(StateMachine.STATES.DASH)
 		"Escape":
 			pass

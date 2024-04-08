@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=9 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/idle.gd" id="4_w3owe"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/moving.gd" id="5_cwlag"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/jump.gd" id="6_4p4ke"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/States/dash.gd" id="7_kwa41"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
 size = Vector3(1, 2.27246, 1)
@@ -49,10 +50,17 @@ camera_deviation_angle = 2.0
 max_speed = 40.0
 acceleration = 0.2
 animation = "Moving"
-accepted_states = Array[int]([2, 0])
+accepted_states = Array[int]([2, 0, 3])
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_4p4ke")
 jump_strength = 30.0
-max_speed = 20.0
 acceleration = 0.1
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("7_kwa41")
+dash_speed = 100.0
+dash_time = 0.2
+delta_dash_fov = 20.0
+animation = "Dash"
+accepted_states = Array[int]([0, 2])
