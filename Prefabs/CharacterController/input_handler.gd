@@ -2,6 +2,9 @@ extends Node
 
 class_name InputHandler
 
+@export var sensintivity: float
+
+@onready var target: Player = get_parent()
 @onready var state_machine: StateMachine = get_parent().get_node("StateMachine")
 
 var actions_array: Array[String] = [
@@ -21,6 +24,9 @@ func _process(delta: float) -> void:
 	add_direction()
 
 func _unhandled_input(event) -> void:
+	if event is InputEventMouseMotion:
+		target.camera.rotation.y -= event.relative.x * sensintivity
+		target.camera.rotation.x -= event.relative.y * sensintivity
 	for action in actions_array:
 		if event.is_action_pressed(action):
 			get_action(action)

@@ -13,7 +13,6 @@ material = SubResource("StandardMaterial3D_43b2s")
 
 [node name="Player" parent="." instance=ExtResource("1_20ea0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.60918, 0)
-sensintivity = 0.004
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0883206, 0.996092, 0, -0.996092, -0.0883206, 0, 17.7346, 0)

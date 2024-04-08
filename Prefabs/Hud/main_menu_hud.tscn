@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://buwg1cexlgx8v"]
+
+[ext_resource type="PackedScene" uid="uid://ch68txdgouvqf" path="res://Prefabs/Hud/settings_menu.tscn" id="1_kakbt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdegh"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 0.729412)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="MainMenuHUD" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 15
+
+[node name="MainMenuPanel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fdegh")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainMenuPanel"]
+layout_mode = 2
+offset_right = 250.0
+offset_bottom = 300.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 45
+
+[node name="MainMenuLabel" type="Label" parent="MarginContainer/MainMenuPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/MainMenuPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MarginContainer/MainMenuPanel/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/MainMenuPanel/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/MainMenuPanel/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Exit"
+
+[node name="SettingsMenuPanel" parent="MarginContainer" instance=ExtResource("1_kakbt")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4

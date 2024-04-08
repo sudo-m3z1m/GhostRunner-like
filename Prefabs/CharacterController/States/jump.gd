@@ -8,6 +8,9 @@ var direction: Vector3
 
 func enter_state(target: Player) -> void:
 	super(target)
+	if !target.is_on_floor():
+		state_machine.change_state(StateMachine.STATES.IDLE)
+		return
 	target.velocity.y += jump_strength
 
 func update_state(delta: float) -> void:
