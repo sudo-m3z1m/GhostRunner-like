@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=6 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/state_machine.gd" id="2_ya1ud"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/States/idle.gd" id="4_w3owe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
 size = Vector3(1, 2.27246, 1)
@@ -37,6 +38,9 @@ script = ExtResource("2_qeet4")
 script = ExtResource("2_ya1ud")
 
 [node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_w3owe")
+animation = "Idle"
+accepted_states = Array[int]([1, 2])
 
 [node name="Moving" type="Node" parent="StateMachine"]
 
