@@ -17,10 +17,14 @@ enum STATES {
 
 @export var start_state: STATES
 
-var current_state: State
+var current_state: State = State.new()
+var direction: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
-	current_state = states[start_state]
+	change_state(start_state)
+
+func _physics_process(delta: float) -> void:
+	current_state.update_state(delta)
 
 func change_state(new_state: STATES) -> void:
 	if states[new_state] == current_state or !current_state.exit_state(new_state):

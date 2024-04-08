@@ -1,25 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=8 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/state_machine.gd" id="2_ya1ud"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/States/idle.gd" id="4_w3owe"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/States/moving.gd" id="5_cwlag"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/States/jump.gd" id="6_4p4ke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
 size = Vector3(1, 2.27246, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_p0jtv")
-max_speed = 20.0
 default_fov = 90.0
-camera_clamp_degrees = 90.0
-jump_strength = 25.0
-acceleration_weight = 0.1
+camera_max_degrees = 90.0
 gravity = 1.2
-sensintivity = 0.001
-dash_speed = 60.0
 max_angle = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
 current = true
 
@@ -32,12 +32,27 @@ size = Vector3(1, 2.24707, 1)
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("2_qeet4")
+sensintivity = 0.005
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_ya1ud")
 
 [node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_w3owe")
+inertia = 0.1
+animation = "Idle"
+accepted_states = Array[int]([1, 2])
 
 [node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("5_cwlag")
+camera_deviation_angle = 2.0
+max_speed = 40.0
+acceleration = 0.2
+animation = "Moving"
+accepted_states = Array[int]([2, 0])
 
 [node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("6_4p4ke")
+jump_strength = 30.0
+max_speed = 20.0
+acceleration = 0.1
