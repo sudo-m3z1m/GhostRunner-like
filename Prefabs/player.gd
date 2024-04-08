@@ -13,21 +13,21 @@ class_name Player
 @export var max_angle: float
 
 @onready var camera: Camera3D = $Camera3D
-#@onready var input_handler: Node = $InputHandler
-#@onready var state_machine: Node = $StateMachine
+@onready var input_handler: InputHandler = $InputHandler
+@onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.fov = default_fov
 
 func _physics_process(delta: float) -> void:
-	velocity.x = lerp(velocity.x, get_direction().x * max_speed, acceleration_weight)
-	velocity.z = lerp(velocity.z, get_direction().z * max_speed, acceleration_weight)
-	
+	#velocity.x = lerp(velocity.x, get_direction().x * max_speed, acceleration_weight)
+	#velocity.z = lerp(velocity.z, get_direction().z * max_speed, acceleration_weight)
+
 	velocity.y -= gravity
 	
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_clamp_degrees), deg_to_rad(camera_clamp_degrees))
-	move_and_slide()
+	#move_and_slide()
 
 func make_dash() -> void:
 	var direction: Vector3 = Vector3.FORWARD.rotated(Vector3.UP, camera.rotation.y)
@@ -42,10 +42,10 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		camera.rotation.y -= event.relative.x * sensintivity
 		camera.rotation.x -= event.relative.y * sensintivity
-	if event.is_action("Space") and is_on_floor():
-		velocity += Vector3.UP * jump_strength
-	if event.is_action("Shift"):
-		make_dash()
+	#if event.is_action("Space") and is_on_floor():
+		#velocity += Vector3.UP * jump_strength
+	#if event.is_action("Shift"):
+		#make_dash()
 
 func get_direction() -> Vector3:
 	var direction: Vector3

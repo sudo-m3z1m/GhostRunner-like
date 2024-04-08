@@ -16,7 +16,7 @@ func update_state(delta: float) -> void:
 	pass
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
-	return false
+	return true
 
 func is_next_state_valid(next_state: StateMachine.STATES) -> bool:
 	for state in accepted_states:
