@@ -5,14 +5,16 @@ class_name StateMachine
 enum STATES {
 	IDLE,
 	MOVING,
-	JUMP
+	JUMP,
+	DASH
 }
 
 @onready var player: Player = get_parent()
 @onready var states: Dictionary = {
 	STATES.IDLE: $Idle,
 	STATES.MOVING: $Moving,
-	STATES.JUMP: $Jump
+	STATES.JUMP: $Jump,
+	STATES.DASH: $Dash
 }
 
 @export var start_state: STATES
