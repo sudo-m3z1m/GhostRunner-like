@@ -10,15 +10,15 @@ extends State
 
 func enter_state(target: Player) -> void:
 	super(target)
+	if !cooldown_timer.is_stopped():
+		finish_dash()
+		return
 	
 	accepted_states.erase(StateMachine.STATES.IDLE)
 	
 	dash_timer.start(dash_time)
 	dash_timer.timeout.connect(finish_dash)
 	
-	if !cooldown_timer.is_stopped():
-		finish_dash()
-		return
 	animate_transition(true)
 	start_dash()
 
