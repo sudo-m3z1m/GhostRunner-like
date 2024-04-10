@@ -62,11 +62,15 @@ acceleration = 0.1
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("7_kwa41")
-dash_speed = 100.0
+dash_speed = 80.0
 dash_time = 0.1
 delta_dash_fov = 10.0
+cooldown = 1.0
 animation = "Dash"
 accepted_states = Array[int]([0, 2])
 
 [node name="Timer" type="Timer" parent="StateMachine/Dash"]
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="StateMachine/Dash"]
 one_shot = true

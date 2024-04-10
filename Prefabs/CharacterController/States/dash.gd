@@ -1,10 +1,12 @@
 extends State
 
 @onready var dash_timer: Timer = $Timer
+@onready var cooldown_timer: Timer = $DashCooldownTimer
 
 @export var dash_speed: float
 @export var dash_time: float
 @export var delta_dash_fov: float
+@export var cooldown: float
 
 func enter_state(target: Player) -> void:
 	super(target)
@@ -14,6 +16,9 @@ func enter_state(target: Player) -> void:
 	dash_timer.start(dash_time)
 	dash_timer.timeout.connect(finish_dash)
 	
+	if !cooldown_timer.is_stopped():
+		finish_dash()
+		return
 	animate_transition(true)
 	start_dash()
 
@@ -30,6 +35,8 @@ func start_dash() -> void:
 	direction = target.camera.global_position.direction_to(target.dash_marker.global_position)
 	
 	target.velocity += direction * dash_speed
+	
+	cooldown_timer.start(cooldown)
 
 func finish_dash() -> void:
 	animate_transition(false)
