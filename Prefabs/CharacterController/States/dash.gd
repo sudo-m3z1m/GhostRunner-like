@@ -1,6 +1,5 @@
 extends State
 
-@onready var dash_timer: Timer = $Timer
 @onready var cooldown_timer: Timer = $DashCooldownTimer
 
 @export var dash_speed: float
@@ -14,11 +13,11 @@ func enter_state(target: Player) -> void:
 		finish_dash()
 		return
 	
-	accepted_states.erase(StateMachine.STATES.IDLE)
-	
-	dash_timer.start(dash_time)
+	var dash_timer: SceneTreeTimer = get_tree().create_timer(dash_time)
 	dash_timer.timeout.connect(finish_dash)
 	
+	accepted_states.erase(StateMachine.STATES.IDLE)
+
 	animate_transition(true)
 	start_dash()
 
@@ -43,8 +42,6 @@ func finish_dash() -> void:
 	
 	accepted_states.append(StateMachine.STATES.IDLE)
 	state_machine.change_state(StateMachine.STATES.IDLE)
-	
-	dash_timer.timeout.disconnect(finish_dash)
 
 func animate_transition(animation_in: bool):
 	var transition_fov: float = target.default_fov

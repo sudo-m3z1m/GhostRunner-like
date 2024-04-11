@@ -58,6 +58,7 @@ accepted_states = Array[int]([2, 0, 3])
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_4p4ke")
 jump_strength = 30.0
+speed = 40.0
 acceleration = 0.1
 
 [node name="Dash" type="Node" parent="StateMachine"]
@@ -68,9 +69,6 @@ delta_dash_fov = 10.0
 cooldown = 1.0
 animation = "Dash"
 accepted_states = Array[int]([0, 2])
-
-[node name="Timer" type="Timer" parent="StateMachine/Dash"]
-one_shot = true
 
 [node name="DashCooldownTimer" type="Timer" parent="StateMachine/Dash"]
 one_shot = true
