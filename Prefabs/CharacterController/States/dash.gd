@@ -40,8 +40,7 @@ func start_dash() -> void:
 func finish_dash() -> void:
 	animate_transition(false)
 	
-	accepted_states.append(StateMachine.STATES.IDLE)
-	state_machine.change_state(StateMachine.STATES.IDLE)
+	state_machine.change_state(StateMachine.STATES.FALLING)
 
 func animate_transition(animation_in: bool):
 	var transition_fov: float = target.default_fov

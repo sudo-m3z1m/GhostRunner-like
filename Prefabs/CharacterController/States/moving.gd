@@ -10,6 +10,7 @@ func enter_state(target: Player) -> void:
 	super(target)
 
 func update_state(delta: float) -> void:
+	target.is_falling()
 	direction = state_machine.direction
 	direction = direction.rotated(Vector3.UP, target.camera.rotation.y)
 	
@@ -18,7 +19,6 @@ func update_state(delta: float) -> void:
 	
 	rotate_camera()
 	target.move_and_slide()
-	target.is_falling()
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if is_next_state_valid(next_state):

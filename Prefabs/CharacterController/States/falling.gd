@@ -20,6 +20,7 @@ func update_state(delta: float) -> void:
 	if target.is_on_floor():
 		accepted_states.append(StateMachine.STATES.IDLE)
 		state_machine.change_state(StateMachine.STATES.IDLE)
+		accepted_states.erase(StateMachine.STATES.IDLE)
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if is_next_state_valid(next_state):

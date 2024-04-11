@@ -18,6 +18,7 @@ default_fov = 90.0
 camera_max_degrees = 90.0
 gravity = 1.2
 max_angle = 2.0
+max_jump_count = 1
 
 [node name="CameraPivot" type="Node3D" parent="."]
 
@@ -41,13 +42,12 @@ sensintivity = 0.005
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_ya1ud")
-start_state = null
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_w3owe")
 inertia = 0.1
 animation = "Idle"
-accepted_states = Array[int]([1, 2])
+accepted_states = Array[int]([1, 2, 4, 3, 0])
 
 [node name="Moving" type="Node" parent="StateMachine"]
 script = ExtResource("5_cwlag")
@@ -62,6 +62,7 @@ script = ExtResource("6_4p4ke")
 jump_strength = 30.0
 speed = 40.0
 acceleration = 0.1
+accepted_states = Array[int]([4])
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("7_kwa41")
@@ -70,7 +71,7 @@ dash_time = 0.1
 delta_dash_fov = 10.0
 cooldown = 1.0
 animation = "Dash"
-accepted_states = Array[int]([0, 2])
+accepted_states = Array[int]([2, 3])
 
 [node name="DashCooldownTimer" type="Timer" parent="StateMachine/Dash"]
 one_shot = true
@@ -78,7 +79,7 @@ one_shot = true
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("8_5n6il")
 speed = 40.0
-acceleration = 0.2
+acceleration = 0.1
 accepted_states = Array[int]([2])
 
 [node name="WallRun" type="Node" parent="StateMachine"]
