@@ -18,6 +18,7 @@ func update_state(delta: float) -> void:
 	
 	rotate_camera()
 	target.move_and_slide()
+	target.is_falling()
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if is_next_state_valid(next_state):

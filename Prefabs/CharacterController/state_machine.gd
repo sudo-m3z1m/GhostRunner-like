@@ -6,7 +6,9 @@ enum STATES {
 	IDLE,
 	MOVING,
 	JUMP,
-	DASH
+	FALLING,
+	DASH,
+	WALLRUN
 }
 
 @onready var player: Player = get_parent()
@@ -14,7 +16,9 @@ enum STATES {
 	STATES.IDLE: $Idle,
 	STATES.MOVING: $Moving,
 	STATES.JUMP: $Jump,
-	STATES.DASH: $Dash
+	STATES.FALLING: $Falling,
+	STATES.DASH: $Dash,
+	STATES.WALLRUN: $WallRun
 }
 
 @export var start_state: STATES

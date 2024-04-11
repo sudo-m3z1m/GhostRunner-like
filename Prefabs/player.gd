@@ -21,3 +21,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= gravity
 	
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))
+
+func is_falling() -> void:
+	if !is_on_floor():
+		state_machine.change_state(StateMachine.STATES.FALLING)

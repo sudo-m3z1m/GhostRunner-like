@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=10 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/moving.gd" id="5_cwlag"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/jump.gd" id="6_4p4ke"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/dash.gd" id="7_kwa41"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/States/falling.gd" id="8_5n6il"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
 size = Vector3(1, 2.27246, 1)
@@ -40,6 +41,7 @@ sensintivity = 0.005
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_ya1ud")
+start_state = null
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_w3owe")
@@ -72,3 +74,11 @@ accepted_states = Array[int]([0, 2])
 
 [node name="DashCooldownTimer" type="Timer" parent="StateMachine/Dash"]
 one_shot = true
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("8_5n6il")
+speed = 40.0
+acceleration = 0.2
+accepted_states = Array[int]([2])
+
+[node name="WallRun" type="Node" parent="StateMachine"]
