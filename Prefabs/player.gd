@@ -13,6 +13,7 @@ class_name Player
 @onready var dash_marker: Marker3D = $CameraPivot/Camera3D/Marker3D
 @onready var input_handler: InputHandler = $InputHandler
 @onready var state_machine: StateMachine = $StateMachine
+@onready var raycasts: Array[Node] = $Raycasts.get_children()
 
 var jump_count: int = max_jump_count
 

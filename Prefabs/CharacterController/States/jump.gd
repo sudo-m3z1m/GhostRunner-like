@@ -24,8 +24,16 @@ func update_state(delta: float) -> void:
 		accepted_states.append(StateMachine.STATES.IDLE)
 		state_machine.change_state(StateMachine.STATES.IDLE)
 		accepted_states.erase(StateMachine.STATES.IDLE)
+	
+	check_raycasts_collision()
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if is_next_state_valid(next_state):
 		return true
 	return false
+
+func check_raycasts_collision() -> void:
+	for raycast in target.raycasts:
+		if !raycast.is_colliding():
+			continue
+		state_machine.change_state(StateMachine.STATES.WALLRUN)
