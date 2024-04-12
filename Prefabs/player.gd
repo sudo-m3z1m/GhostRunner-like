@@ -23,8 +23,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y -= gravity
-	
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))
+	$Raycasts.rotation.y = camera.rotation.y
 
 func is_falling() -> void:
 	if !is_on_floor():
