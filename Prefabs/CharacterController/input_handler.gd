@@ -10,7 +10,8 @@ class_name InputHandler
 var actions_array: Array[String] = [
 	"Space",
 	"Shift",
-	"Escape"
+	"Escape",
+	"Attack"
 ]
 
 var move_actions_array: Array[String] = [
@@ -55,3 +56,5 @@ func get_action(action: String) -> void:
 			state_machine.change_state(StateMachine.STATES.DASH)
 		"Escape":
 			pass
+		"Attack":
+			target.attack()
