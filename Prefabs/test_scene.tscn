@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bljjoykcp0swp" path="res://Prefabs/player.tscn" id="1_20ea0"]
 [ext_resource type="Texture2D" uid="uid://bh1cqaqkno3ou" path="res://icon.svg" id="1_exvkv"]
-[ext_resource type="PackedScene" uid="uid://dm8h67lom6j46" path="res://Prefabs/enemy.tscn" id="3_gn5ej"]
+[ext_resource type="PackedScene" path="res://Prefabs/enemy.tscn" id="3_gn5ej"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43b2s"]
 albedo_texture = ExtResource("1_exvkv")
