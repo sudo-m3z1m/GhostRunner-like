@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm8h67lom6j46"]
+[gd_scene load_steps=7 format=3 uid="uid://biknmqcdxhw6m"]
 
 [ext_resource type="Script" path="res://Prefabs/enemy.gd" id="1_cscqk"]
 
@@ -25,7 +25,7 @@ _data = {
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_cscqk")
-speed = 40.0
+speed = 140.0
 gravity = 1.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

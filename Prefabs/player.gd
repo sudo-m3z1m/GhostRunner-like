@@ -36,4 +36,4 @@ func attack() -> void:
 	for body in collided_bodies:
 		if !(body is Enemy):
 			continue
-		body.take_damage((body.global_position - global_position).normalized())
+		body.take_damage(Vector3.FORWARD.rotated(Vector3.UP, camera.rotation.y))
