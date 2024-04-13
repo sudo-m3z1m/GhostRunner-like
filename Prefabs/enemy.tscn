@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm8h67lom6j46"]
+
+[ext_resource type="Script" path="res://Prefabs/enemy.gd" id="1_cscqk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jit8v"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tpt5g"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="Animation" id="Animation_w0qcm"]
+resource_name = "Death"
+length = 0.3
+
+[sub_resource type="Animation" id="Animation_aih8r"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yiwyi"]
+_data = {
+"Death": SubResource("Animation_w0qcm"),
+"RESET": SubResource("Animation_aih8r")
+}
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_cscqk")
+speed = 40.0
+gravity = 1.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jit8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tpt5g")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yiwyi")
+}

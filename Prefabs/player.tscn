@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=12 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/dash.gd" id="7_kwa41"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/falling.gd" id="8_5n6il"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/wallrun.gd" id="9_km4t3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0ohi"]
+size = Vector3(2.2168, 1, 3.33118)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
 size = Vector3(1, 2.27246, 1)
@@ -29,6 +32,13 @@ current = true
 
 [node name="Marker3D" type="Marker3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.00497)
+
+[node name="AttackArea" type="Area3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0449936, -1.28663)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraPivot/Camera3D/AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.16559)
+shape = SubResource("BoxShape3D_w0ohi")
 
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
@@ -69,7 +79,7 @@ camera_deviation_angle = 2.0
 max_speed = 40.0
 acceleration = 0.2
 animation = "Moving"
-accepted_states = Array[int]([2, 0, 3])
+accepted_states = Array[int]([2, 0, 3, 4])
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_4p4ke")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://h0odwfwje50w"]
+[gd_scene load_steps=5 format=3 uid="uid://h0odwfwje50w"]
 
 [ext_resource type="PackedScene" uid="uid://bljjoykcp0swp" path="res://Prefabs/player.tscn" id="1_20ea0"]
 [ext_resource type="Texture2D" uid="uid://bh1cqaqkno3ou" path="res://icon.svg" id="1_exvkv"]
+[ext_resource type="PackedScene" uid="uid://dm8h67lom6j46" path="res://Prefabs/enemy.tscn" id="3_gn5ej"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43b2s"]
 albedo_texture = ExtResource("1_exvkv")
@@ -55,3 +56,6 @@ size = Vector3(45.3819, 25.1724, 5.0752)
 [node name="CSGBox3D9" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.7803, 16.5169, -137.263)
 size = Vector3(30.7023, 5.86914, 31.1689)
+
+[node name="Enemy" parent="." instance=ExtResource("3_gn5ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.1402, 18.4211)

@@ -14,6 +14,7 @@ class_name Player
 @onready var input_handler: InputHandler = $InputHandler
 @onready var state_machine: StateMachine = $StateMachine
 @onready var raycasts: Array[Node] = $Raycasts.get_children()
+@onready var attack_area: Area3D = $CameraPivot/Camera3D/AttackArea
 
 var jump_count: int = max_jump_count
 
@@ -29,3 +30,10 @@ func _physics_process(delta: float) -> void:
 func is_falling() -> void:
 	if !is_on_floor():
 		state_machine.change_state(StateMachine.STATES.FALLING)
+
+func attack() -> void:
+	var collided_bodies: Array[Node3D] = attack_area.get_overlapping_bodies()
+	for body in collided_bodies:
+		if !(body is Enemy):
+			continue
+		body.take_damage((body.global_position - global_position).normalized())
