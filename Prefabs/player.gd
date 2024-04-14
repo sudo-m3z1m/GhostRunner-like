@@ -15,6 +15,7 @@ class_name Player
 @onready var state_machine: StateMachine = $StateMachine
 @onready var raycasts: Array[Node] = $Raycasts.get_children()
 @onready var attack_area: Area3D = $CameraPivot/Camera3D/AttackArea
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var jump_count: int = max_jump_count
 

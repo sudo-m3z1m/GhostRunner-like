@@ -7,10 +7,12 @@ class_name State
 
 var state_machine: StateMachine
 var target: Player
+var animation_player: AnimationPlayer
 
 func enter_state(target: Player) -> void:
 	self.target = target
 	state_machine = get_parent()
+	animation_player = target.animation_player
 
 func update_state(delta: float) -> void:
 	pass
