@@ -34,6 +34,7 @@ func is_falling() -> void:
 
 func attack() -> void:
 	var collided_bodies: Array[Node3D] = attack_area.get_overlapping_bodies()
+	animation_player.play("Attack")
 	for body in collided_bodies:
 		if !(body is Enemy):
 			continue

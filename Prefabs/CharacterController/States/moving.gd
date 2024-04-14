@@ -23,6 +23,7 @@ func update_state(delta: float) -> void:
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if is_next_state_valid(next_state):
+		animation_player.stop()
 		return true
 	return false
 
