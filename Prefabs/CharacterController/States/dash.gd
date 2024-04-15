@@ -7,6 +7,8 @@ extends State
 @export var delta_dash_fov: float
 @export var cooldown: float
 
+const MAX_VERTICLE_DASH_LENGTH = 40
+
 func enter_state(target: Player) -> void:
 	super(target)
 	if !cooldown_timer.is_stopped():
@@ -15,8 +17,6 @@ func enter_state(target: Player) -> void:
 	
 	var dash_timer: SceneTreeTimer = get_tree().create_timer(dash_time)
 	dash_timer.timeout.connect(finish_dash)
-	
-	accepted_states.erase(StateMachine.STATES.IDLE)
 	
 	animate_transition(true)
 	start_dash()
@@ -32,11 +32,11 @@ func exit_state(next_state: StateMachine.STATES) -> bool:
 func start_dash() -> void:
 	var direction: Vector3
 	direction = target.camera.global_position.direction_to(target.dash_marker.global_position)
-	
+
 	target.velocity = direction * dash_speed
-	
-	target.velocity.y = clamp(target.velocity.y, -1.2, 40)
-	
+
+	target.velocity.y = clamp(target.velocity.y, -target.gravity, MAX_VERTICLE_DASH_LENGTH)
+
 	cooldown_timer.start(cooldown)
 
 func finish_dash() -> void:

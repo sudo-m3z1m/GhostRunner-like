@@ -31,11 +31,3 @@ func _physics_process(delta: float) -> void:
 func is_falling() -> void:
 	if !is_on_floor():
 		state_machine.change_state(StateMachine.STATES.FALLING)
-
-func attack() -> void:
-	var collided_bodies: Array[Node3D] = attack_area.get_overlapping_bodies()
-	animation_player.play("Attack")
-	for body in collided_bodies:
-		if !(body is Enemy):
-			continue
-		body.take_damage(Vector3.FORWARD.rotated(Vector3.UP, camera.rotation.y))

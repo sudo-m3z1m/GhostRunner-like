@@ -57,4 +57,4 @@ func get_action(action: String) -> void:
 		"Escape":
 			pass
 		"Attack":
-			target.attack()
+			state_machine.change_state(StateMachine.STATES.ATTACK)
