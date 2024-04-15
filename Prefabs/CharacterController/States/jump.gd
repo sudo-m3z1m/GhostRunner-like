@@ -8,7 +8,7 @@ var direction: Vector3
 
 func enter_state(target: Player) -> void:
 	super(target)
-	target.velocity.y += jump_strength * clamp(target.jump_count, 0, 1)
+	target.velocity.y = jump_strength * clamp(target.jump_count, 0, 1)
 	target.jump_count -= 1
 
 func update_state(delta: float) -> void:

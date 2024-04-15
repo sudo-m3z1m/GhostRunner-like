@@ -17,7 +17,7 @@ func enter_state(target: Player) -> void:
 	dash_timer.timeout.connect(finish_dash)
 	
 	accepted_states.erase(StateMachine.STATES.IDLE)
-
+	
 	animate_transition(true)
 	start_dash()
 
@@ -33,13 +33,14 @@ func start_dash() -> void:
 	var direction: Vector3
 	direction = target.camera.global_position.direction_to(target.dash_marker.global_position)
 	
-	target.velocity += direction * dash_speed
+	target.velocity = direction * dash_speed
+	
+	target.velocity.y = clamp(target.velocity.y, -1.2, 40)
 	
 	cooldown_timer.start(cooldown)
 
 func finish_dash() -> void:
 	animate_transition(false)
-	
 	state_machine.change_state(StateMachine.STATES.FALLING)
 
 func animate_transition(animation_in: bool):
