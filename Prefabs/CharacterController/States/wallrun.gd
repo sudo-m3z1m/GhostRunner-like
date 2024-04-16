@@ -34,6 +34,8 @@ func update_state(delta: float) -> void:
 		state_machine.change_state(StateMachine.STATES.FALLING)
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
+	if next_state == StateMachine.STATES.JUMP:
+		state_machine.direction = collided_raycast.get_collision_normal() * 500
 	if is_next_state_valid(next_state):
 		animate_camera(false)
 		return true

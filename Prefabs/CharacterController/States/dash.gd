@@ -35,7 +35,7 @@ func start_dash() -> void:
 
 	target.velocity = direction * dash_speed
 
-	target.velocity.y = clamp(target.velocity.y, -target.gravity, MAX_VERTICLE_DASH_LENGTH)
+	target.velocity.y = clamp(target.velocity.y, -MAX_VERTICLE_DASH_LENGTH, MAX_VERTICLE_DASH_LENGTH)
 
 	cooldown_timer.start(cooldown)
 
