@@ -28,6 +28,8 @@ func _unhandled_input(event) -> void:
 	if event is InputEventMouseMotion:
 		target.camera.rotation.y -= event.relative.x * sensintivity
 		target.camera.rotation.x -= event.relative.y * sensintivity
+		target.raycasts_pivot.rotation.y = target.camera.rotation.y
+
 	for action in actions_array:
 		if event.is_action_pressed(action):
 			get_action(action)

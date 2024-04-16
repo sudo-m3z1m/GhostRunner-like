@@ -14,7 +14,6 @@ func enter_state(target: Player) -> void:
 	target.velocity.y = 0
 	
 	collided_raycast = get_collided_raycast()
-	target.rotation.y = collided_raycast.get_collision_normal().y
 	
 	direction = Vector3.FORWARD.rotated(Vector3.UP, target.camera.rotation.y)
 	target.gravity = 0

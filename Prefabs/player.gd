@@ -14,6 +14,7 @@ class_name Player
 @onready var input_handler: InputHandler = $InputHandler
 @onready var state_machine: StateMachine = $StateMachine
 @onready var raycasts: Array[Node] = $Raycasts.get_children()
+@onready var raycasts_pivot: Node3D = $Raycasts
 @onready var attack_area: Area3D = $CameraPivot/Camera3D/AttackArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -26,7 +27,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity.y -= gravity
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))
-	$Raycasts.rotation.y = camera.rotation.y
 
 func is_falling() -> void:
 	if !is_on_floor():
