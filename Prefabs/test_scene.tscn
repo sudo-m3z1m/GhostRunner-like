@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://h0odwfwje50w"]
+[gd_scene load_steps=7 format=3 uid="uid://h0odwfwje50w"]
 
 [ext_resource type="PackedScene" uid="uid://bljjoykcp0swp" path="res://Prefabs/player.tscn" id="1_20ea0"]
-[ext_resource type="Texture2D" uid="uid://bh1cqaqkno3ou" path="res://icon.svg" id="1_exvkv"]
-[ext_resource type="PackedScene" uid="uid://biuvsontnmu4h" path="res://Prefabs/enemy.tscn" id="3_gn5ej"]
+[ext_resource type="PackedScene" uid="uid://dy0n3is12khbf" path="res://Prefabs/Enemies/default_enemy.tscn" id="3_n28ny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43b2s"]
-albedo_texture = ExtResource("1_exvkv")
+albedo_color = Color(0.694118, 0.666667, 0.988235, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lcfyt"]
+sky_horizon_color = Color(0.235294, 0.121569, 0.278431, 1)
+ground_bottom_color = Color(0.211765, 0.141176, 0.247059, 1)
+ground_horizon_color = Color(0.235294, 0.121569, 0.278431, 1)
+
+[sub_resource type="Sky" id="Sky_5io2o"]
+sky_material = SubResource("ProceduralSkyMaterial_lcfyt")
+
+[sub_resource type="Environment" id="Environment_7tny5"]
+background_mode = 2
+sky = SubResource("Sky_5io2o")
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_sharpness = 0.39
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_y_scale = 2
 
 [node name="CSGBox3D" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.2515, 0, 0)
@@ -17,9 +34,6 @@ material = SubResource("StandardMaterial3D_43b2s")
 
 [node name="Player" parent="." instance=ExtResource("1_20ea0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.874222, 3.60918, 146.357)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0883206, 0.996092, 0, -0.996092, -0.0883206, 0, 17.7346, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.55458, 2.74887, 92.1967)
@@ -57,5 +71,14 @@ size = Vector3(45.3819, 25.1724, 5.0752)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.7803, 16.5169, -137.263)
 size = Vector3(30.7023, 5.86914, 31.1689)
 
-[node name="Enemy" parent="." instance=ExtResource("3_gn5ej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.1402, 18.4211)
+[node name="DefaultEnemy" parent="." instance=ExtResource("3_n28ny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.7508, 15.7841)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.972333, 0.233598, 0, -0.233598, 0.972333, 0, 17.7346, 0)
+light_color = Color(0.745098, 0.807843, 1, 1)
+shadow_enabled = true
+shadow_blur = 0.06
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7tny5")

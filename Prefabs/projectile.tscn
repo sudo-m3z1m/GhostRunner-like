@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://67ql60iex6b5"]
+
+[ext_resource type="Script" path="res://Prefabs/projectile.gd" id="1_d3mbq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjguc"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hld2u"]
+material = SubResource("StandardMaterial3D_jjguc")
+radius = 0.1
+height = 0.5
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_d3mbq")
+speed = 0.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_hld2u")

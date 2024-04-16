@@ -3,6 +3,7 @@ extends State
 @export_range(0, 1) var acceleration: float
 @export var max_speed: float
 @export var max_camera_rotation: float
+@export var verticle_direction: float
 
 var collided_raycast: RayCast3D
 var direction: Vector3
@@ -16,6 +17,8 @@ func enter_state(target: Player) -> void:
 	collided_raycast = get_collided_raycast()
 	
 	direction = Vector3.FORWARD.rotated(Vector3.UP, target.camera.rotation.y)
+	direction.y = verticle_direction
+
 	target.gravity = 0
 	animate_camera(true)
 
