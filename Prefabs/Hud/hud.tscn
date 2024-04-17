@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://4src8hl7qndu"]
+
+[ext_resource type="PackedScene" uid="uid://dnif851vn3m0v" path="res://Prefabs/Hud/game_over_hud.tscn" id="1_qa2io"]
+[ext_resource type="Script" path="res://Prefabs/Hud/hud.gd" id="1_vbsyh"]
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+script = ExtResource("1_vbsyh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverHud" parent="MarginContainer" instance=ExtResource("1_qa2io")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

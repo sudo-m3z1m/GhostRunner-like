@@ -1,5 +1,8 @@
 extends State
-
+#TODO maybe attack state don't needed at attack area and
+#I need to think about that. Need to make 2 states in attack state.
+#One with attack and damage deal and second with placing kataba back.
+#Need to think about retrying transitions in attack state
 @onready var cooldown_timer: Timer = $CooldownTimer
 
 @export var dash_attack_speed: float

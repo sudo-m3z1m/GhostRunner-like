@@ -18,10 +18,10 @@ sky_material = SubResource("ProceduralSkyMaterial_lcfyt")
 background_mode = 2
 sky = SubResource("Sky_5io2o")
 ssao_enabled = true
-ssao_radius = 16.0
 ssao_sharpness = 0.39
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 3.0
 sdfgi_y_scale = 2
 
 [node name="CSGBox3D" type="CSGBox3D"]
@@ -75,10 +75,12 @@ size = Vector3(30.7023, 5.86914, 31.1689)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.7508, 15.7841)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.972333, 0.233598, 0, -0.233598, 0.972333, 0, 17.7346, 0)
+transform = Transform3D(1, 0, 0, 0, 0.972333, 0.233598, 0, -0.233598, 0.972333, 0, 47.1823, 0)
 light_color = Color(0.745098, 0.807843, 1, 1)
 shadow_enabled = true
 shadow_blur = 0.06
+directional_shadow_max_distance = 200.0
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7tny5")

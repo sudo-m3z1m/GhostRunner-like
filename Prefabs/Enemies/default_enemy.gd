@@ -4,7 +4,8 @@ extends Enemy
 @export var projectile_packed: PackedScene
 
 @onready var weapon_pivot: Node3D = $WeaponPivot
-@onready var weapon: MeshInstance3D = $WeaponPivot/MeshInstance3D #TODO
+@onready var weapon: MeshInstance3D = $WeaponPivot/MeshInstance3D #TODO Maybe need to make
+#weapon system and maybe this is useless shit, need to think about gameplay
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 

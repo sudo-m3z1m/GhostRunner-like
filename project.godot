@@ -13,7 +13,11 @@ config_version=5
 config/name="Ghostrunner-like"
 run/main_scene="res://Prefabs/test_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://preview.png"
+
+[autoload]
+
+HUD="*res://Prefabs/Hud/hud.tscn"
 
 [input]
 

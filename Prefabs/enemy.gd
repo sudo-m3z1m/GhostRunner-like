@@ -17,7 +17,7 @@ func _physics_process(delta) -> void:
 
 	move_and_slide()
 
-func take_damage(dir: Vector3) -> void: #TODO
+func take_damage(dir: Vector3) -> void: #TODO I wrote same shit in projectile class.
 	var knockback_timer: SceneTreeTimer = get_tree().create_timer(0.1)
 	knockback_timer.timeout.connect(reset_velocity)
 	

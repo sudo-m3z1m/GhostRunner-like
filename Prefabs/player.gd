@@ -31,3 +31,9 @@ func _physics_process(delta: float) -> void:
 func is_falling() -> void:
 	if !is_on_floor():
 		state_machine.change_state(StateMachine.STATES.FALLING)
+
+func kill() -> void:
+	get_tree().paused = true
+	
+	HUD.set_hud_visible("GameOver", true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
