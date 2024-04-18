@@ -57,6 +57,6 @@ func get_action(action: String) -> void:
 		"Shift":
 			state_machine.change_state(StateMachine.STATES.DASH)
 		"Escape":
-			pass
+			HUD.pause_clicked()
 		"Attack":
 			state_machine.change_state(StateMachine.STATES.ATTACK)

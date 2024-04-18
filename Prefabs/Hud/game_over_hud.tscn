@@ -54,11 +54,9 @@ custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 focus_mode = 0
 text = "Retry"
-flat = true
 
 [node name="ExitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 focus_mode = 0
 text = "Exit"
-flat = true

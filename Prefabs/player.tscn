@@ -163,6 +163,7 @@ mesh = SubResource("CapsuleMesh_f7mor")
 shape = SubResource("BoxShape3D_gsifa")
 
 [node name="InputHandler" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("2_qeet4")
 sensintivity = 0.005
 

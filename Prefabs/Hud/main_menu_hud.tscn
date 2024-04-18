@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://buwg1cexlgx8v"]
 
-[ext_resource type="PackedScene" uid="uid://ch68txdgouvqf" path="res://Prefabs/Hud/settings_menu.tscn" id="1_kakbt"]
+[ext_resource type="Script" path="res://Prefabs/Hud/main_menu_hud.gd" id="1_qun81"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdegh"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 0.729412)
@@ -10,6 +10,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [node name="MainMenuHUD" type="CanvasLayer"]
+script = ExtResource("1_qun81")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 90
@@ -69,8 +71,3 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 text = "Exit"
-
-[node name="SettingsMenuPanel" parent="MarginContainer" instance=ExtResource("1_kakbt")]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
