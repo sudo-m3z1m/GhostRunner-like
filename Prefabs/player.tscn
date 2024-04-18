@@ -213,6 +213,10 @@ accepted_states = Array[int]([3])
 [node name="CooldownTimer" type="Timer" parent="StateMachine/Attack"]
 one_shot = true
 
+[node name="Attack" type="Node" parent="StateMachine/Attack"]
+
+[node name="Recoil" type="Node" parent="StateMachine/Attack"]
+
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("8_5n6il")
 speed = 40.0

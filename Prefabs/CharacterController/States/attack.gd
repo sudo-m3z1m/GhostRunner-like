@@ -1,14 +1,19 @@
 extends State
-#TODO maybe attack state don't needed at attack area and
-#I need to think about that. Need to make 2 states in attack state.
+#TODO Need to make 2 states in attack state.
 #One with attack and damage deal and second with placing kataba back.
 #Need to think about retrying transitions in attack state
 @onready var cooldown_timer: Timer = $CooldownTimer
+#@onready var attack_state: State = $Attack
+#@onready var recoil_state: State = $Recoil
 
 @export var dash_attack_speed: float
 @export var cooldown: float
 
+#var current_state: State
 var attack_area: Area3D
+
+#func change_attack_state(next_state: State) -> void:
+	#current_state.exit_state()
 
 func enter_state(target: Player) -> void:
 	super(target)
