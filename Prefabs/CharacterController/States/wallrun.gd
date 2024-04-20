@@ -18,7 +18,8 @@ func enter_state(target: Player) -> void:
 	
 	direction = Vector3.FORWARD.rotated(Vector3.UP, target.camera.rotation.y)
 	direction.y = verticle_direction
-
+	
+	target.jump_count = target.max_jump_count
 	target.gravity = 0
 	animate_camera(true)
 
@@ -29,14 +30,15 @@ func update_state(delta: float) -> void:
 	target.move_and_slide()
 	
 	if !collided_raycast.is_colliding():
-		target.gravity = 1.2
 		target.rotation = Vector3.ZERO
 		state_machine.change_state(StateMachine.STATES.FALLING)
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if next_state == StateMachine.STATES.JUMP:
-		state_machine.direction = collided_raycast.get_collision_normal() * 500
+		collided_raycast.enabled = false
+		target.velocity += collided_raycast.get_collision_normal() * 40
 	if is_next_state_valid(next_state):
+		target.gravity = 1.2
 		animate_camera(false)
 		return true
 	return false
