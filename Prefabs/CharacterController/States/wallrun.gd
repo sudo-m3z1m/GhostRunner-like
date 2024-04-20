@@ -35,7 +35,6 @@ func update_state(delta: float) -> void:
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if next_state == StateMachine.STATES.JUMP:
-		collided_raycast.enabled = false
 		target.velocity += collided_raycast.get_collision_normal() * 40
 	if is_next_state_valid(next_state):
 		target.gravity = 1.2

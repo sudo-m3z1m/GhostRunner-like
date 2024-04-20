@@ -14,7 +14,7 @@ func enter_state(target: Player) -> void:
 	if !cooldown_timer.is_stopped():
 		finish_dash()
 		return
-	
+
 	var dash_timer: SceneTreeTimer = get_tree().create_timer(dash_time)
 	dash_timer.timeout.connect(finish_dash)
 	
