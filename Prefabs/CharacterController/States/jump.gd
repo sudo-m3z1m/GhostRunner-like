@@ -39,7 +39,7 @@ func check_raycasts_collision() -> void:
 		if target.raycasts[raycast_index].is_colliding() == prev_raycasts_states[raycast_index] or \
 		target.raycasts[raycast_index].is_colliding() == false:
 			continue
-		copy_raycasts_collisions()
+		#copy_raycasts_collisions()
 		state_machine.change_state(StateMachine.STATES.WALLRUN)
 
 func copy_raycasts_collisions() -> void:

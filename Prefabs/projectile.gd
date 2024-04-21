@@ -31,3 +31,6 @@ func hurt_box_entered(body: Node3D) -> void:
 		#maybe this is just useless I need to think about it.
 
 	queue_free()
+
+func take_damage(dir: Vector3) -> void:
+	velocity = dir * speed
