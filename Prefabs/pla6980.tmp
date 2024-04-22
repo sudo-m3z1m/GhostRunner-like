@@ -388,7 +388,7 @@ accepted_states = Array[int]([2, 3])
 script = ExtResource("15_0nt4x")
 slow_time = 4.0
 default_ammo_count = 3.0
-get_gun_animation = "GetGun"
+get_gun_animation = "GetWeapon"
 shot_animation = "Shot"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TimeController"]

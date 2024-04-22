@@ -15,7 +15,7 @@ func _ready() -> void:
 	hurt_box_area.body_entered.connect(hurt_box_entered)
 
 func _physics_process(delta) -> void:
-	global_position += velocity
+	global_position += velocity * Engine.time_scale
 
 func shoot(shot_position: Vector3, target_position: Vector3) -> void:
 	global_position = shot_position

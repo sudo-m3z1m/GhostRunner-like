@@ -25,7 +25,7 @@ func _ready() -> void:
 	camera.fov = default_fov
 
 func _physics_process(delta: float) -> void:
-	velocity.y -= gravity
+	velocity.y -= gravity / (1 / Engine.time_scale)
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))
 
 func is_falling() -> void:

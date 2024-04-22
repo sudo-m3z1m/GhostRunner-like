@@ -15,7 +15,6 @@ func enter_state(target: Player) -> void:
 func update_state(delta: float) -> void:
 	direction = state_machine.direction
 	direction = direction.rotated(Vector3.UP, target.camera.rotation.y)
-	
 	target.velocity.x = lerp(target.velocity.x, direction.x * speed, acceleration)
 	target.velocity.z = lerp(target.velocity.z, direction.z * speed, acceleration)
 	
@@ -39,7 +38,6 @@ func check_raycasts_collision() -> void:
 		if target.raycasts[raycast_index].is_colliding() == prev_raycasts_states[raycast_index] or \
 		target.raycasts[raycast_index].is_colliding() == false:
 			continue
-		#copy_raycasts_collisions()
 		state_machine.change_state(StateMachine.STATES.WALLRUN)
 
 func copy_raycasts_collisions() -> void:

@@ -11,7 +11,7 @@ func update_state(delta: float) -> void:
 	target.velocity.z = lerp(target.velocity.z, 0.0, inertia)
 	
 	target.camera_pivot.rotation = lerp(target.camera_pivot.rotation, Vector3.ZERO, 0.1)
-	#target.move_and_slide()
+	target.move_and_slide()
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if is_next_state_valid(next_state):
