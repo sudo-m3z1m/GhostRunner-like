@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=23 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/state_machine.gd" id="2_ya1ud"]
+[ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="3_lf7hl"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/idle.gd" id="4_w3owe"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/moving.gd" id="5_cwlag"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/jump.gd" id="6_4p4ke"]
@@ -172,6 +173,9 @@ shape = SubResource("BoxShape3D_w0ohi")
 
 [node name="katana" parent="CameraPivot/Camera3D" instance=ExtResource("10_k4t41")]
 transform = Transform3D(-0.0996507, -0.00822365, 0.00145008, 2.76108e-10, 0.0173651, 0.0984808, -0.00835052, 0.0981367, -0.0173045, -0.000955343, -0.278167, -0.633316)
+
+[node name="shotgun_placeholder" parent="CameraPivot/Camera3D" instance=ExtResource("3_lf7hl")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -1.05984, -0.358514, -1.48991)
 
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
