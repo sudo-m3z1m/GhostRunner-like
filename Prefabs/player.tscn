@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=28 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/recovery.gd" id="11_bc6xh"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/attack.gd" id="11_ppd77"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/time_controller.gd" id="15_0nt4x"]
+[ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="16_fhpaw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0ohi"]
 size = Vector3(2.2168, 1, 3.33118)
@@ -24,34 +25,6 @@ height = 1.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsifa"]
 size = Vector3(1, 2.27246, 1)
-
-[sub_resource type="Animation" id="Animation_jfjh2"]
-resource_name = "Shot"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CameraPivot/Camera3D/shotgun_placeholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.05984, -0.358514, -1.48991), Vector3(-1.05984, -0.358514, -1.14592), Vector3(-1.05984, -0.358514, -1.48991)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../CameraPivot/Camera3D/shotgun_placeholder:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.11, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 1.65806), Vector3(0, 1.5708, 1.74533), Vector3(0, 1.5708, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_spx8a"]
 resource_name = "GetGun"
@@ -91,6 +64,34 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5708, -0.523599), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jfjh2"]
+resource_name = "Shot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CameraPivot/Camera3D/shotgun_placeholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.05984, -0.358514, -1.48991), Vector3(-1.05984, -0.358514, -1.14592), Vector3(-1.05984, -0.358514, -1.48991)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CameraPivot/Camera3D/shotgun_placeholder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.11, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 1.65806), Vector3(0, 1.5708, 1.74533), Vector3(0, 1.5708, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jvt2o"]
@@ -286,8 +287,11 @@ shape = SubResource("BoxShape3D_w0ohi")
 transform = Transform3D(-0.0996507, -0.00822365, 0.00145008, 2.76108e-10, 0.0173651, 0.0984808, -0.00835052, 0.0981367, -0.0173045, -0.000955343, -0.278167, -0.633316)
 
 [node name="shotgun_placeholder" parent="CameraPivot/Camera3D" instance=ExtResource("3_lf7hl")]
-transform = Transform3D(-1.51421e-08, -8.74228e-09, 0.4, -0.2, 0.34641, 0, -0.34641, -0.2, -1.74846e-08, -1.05984, -0.358514, -1.48991)
+transform = Transform3D(-1.254e-06, -7.23998e-07, 0.4, -0.2, 0.34641, 0, -0.34641, -0.2, -1.448e-06, -1.05984, -0.358514, -1.48991)
 visible = false
+
+[node name="ShotDirection" type="Marker3D" parent="CameraPivot/Camera3D/shotgun_placeholder"]
+transform = Transform3D(1, 0, 1.59162e-12, 0, 1, 0, 0, 0, 1, 3.019, 0, 0)
 
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
@@ -390,6 +394,7 @@ slow_time = 4.0
 default_ammo_count = 3.0
 get_gun_animation = "GetGun"
 shot_animation = "Shot"
+projectile_packed = ExtResource("16_fhpaw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TimeController"]
 libraries = {
