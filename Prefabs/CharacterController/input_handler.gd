@@ -6,7 +6,6 @@ class_name InputHandler
 
 @onready var target: Player = get_parent()
 @onready var state_machine: StateMachine = get_parent().get_node("StateMachine")
-@onready var time_controller: TimeController = get_parent().get_node("TimeController")
 
 var actions_array: Array[String] = [
 	"Space",
@@ -64,6 +63,6 @@ func get_action(action: String) -> void:
 		"Attack":
 			state_machine.change_state(StateMachine.STATES.ATTACK)
 		"GetWeapon":
-			time_controller.enter_state()
+			state_machine.change_time_state(StateMachine.STATES.SLOWED_TIME)
 		"AlternativeAttack":
-			time_controller.shot()
+			state_machine.shoot()

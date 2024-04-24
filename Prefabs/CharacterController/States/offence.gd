@@ -37,6 +37,7 @@ func check_preys() -> void:
 		if !(body.get_parent() is Projectile):
 			continue
 		body.get_parent().take_damage(Vector3.FORWARD.rotated(Vector3.UP, target.camera.rotation.y))
+		body.get_parent().rotation = target.camera.rotation
 
 func is_animation_ended() -> void:
 	if animation_player.is_playing():

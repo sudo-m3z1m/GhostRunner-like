@@ -16,7 +16,7 @@ height = 0.5
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_d3mbq")
-speed = 0.7
+speed = 1.0
 exist_time = 30.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
