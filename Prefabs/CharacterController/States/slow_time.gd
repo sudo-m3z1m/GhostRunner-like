@@ -5,6 +5,7 @@ extends TimeState
 
 func enter_state(target: Player) -> void:
 	super(target)
+	current_bullets_count = max_bullets_count
 
 func change_time() -> void:
 	Engine.time_scale = default_time_scale / slow_time_ratio
@@ -12,6 +13,9 @@ func change_time() -> void:
 
 func shoot() -> void:
 	animation_player.play(shoot_animation)
+	current_bullets_count -= 1
+	if current_bullets_count <= 0:
+		state_machine.change_time_state(StateMachine.STATES.DEFAULT_TIME)
 
 func exit_state(next_state: StateMachine.STATES) -> bool:
 	if !(is_next_state_valid(next_state)):
