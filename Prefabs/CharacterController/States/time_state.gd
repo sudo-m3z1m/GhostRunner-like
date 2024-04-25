@@ -6,7 +6,6 @@ class_name TimeState
 
 var current_bullets_count: int
 var default_time_scale: float = Engine.time_scale
-var gun: Node3D
 
 func enter_state(target: Player) -> void:
 	super(target)
