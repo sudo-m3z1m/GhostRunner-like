@@ -63,6 +63,6 @@ func get_action(action: String) -> void:
 		"Attack":
 			state_machine.change_state(StateMachine.STATES.ATTACK)
 		"GetWeapon":
-			state_machine.change_time_state(StateMachine.STATES.SLOWED_TIME)
+			target.gun.change_state(Gun.GUN_STATES.GET_UP)
 		"AlternativeAttack":
-			state_machine.shoot()
+			target.gun.shoot()

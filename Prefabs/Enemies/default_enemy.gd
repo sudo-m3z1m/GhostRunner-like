@@ -8,10 +8,13 @@ extends Enemy
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
+#TODO Need to rewrite enemy class and this class too.
+
 func _ready() -> void:
-	cooldown_timer.timeout.connect(shoot)
-	cooldown_timer.wait_time = cooldown
-	cooldown_timer.start()
+	pass
+	#cooldown_timer.timeout.connect(shoot)
+	#cooldown_timer.wait_time = cooldown
+	#cooldown_timer.start()
 
 func _physics_process(delta: float) -> void:
 	super(delta)

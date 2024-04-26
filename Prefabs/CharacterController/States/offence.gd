@@ -14,30 +14,16 @@ func enter_state(target: Player, attack_state: State, animation_player: Animatio
 	start_attack()
 
 func update_state(delta: float) -> void:
-	check_preys()
+	#check_preys() #TODO need to make weapon_component for this stuff
 	is_animation_ended()
 	
 	target.move_and_slide()
-
-func exit_state() -> void:
-	pass
 
 func start_attack() -> void:
 	var direction: Vector3
 	direction = target.camera.global_position.direction_to(target.dash_marker.global_position)
 	target.velocity += direction * dash_attack_speed
 	target.velocity.y = clamp(target.velocity.y, -MAX_VERTICLE_VELOCITY, MAX_VERTICLE_VELOCITY)
-
-func check_preys() -> void:
-	for body in attack_area.get_overlapping_bodies():
-		if !(body is Enemy):
-			continue
-		body.take_damage(Vector3.FORWARD.rotated(Vector3.UP, target.camera.rotation.y))
-	for body in attack_area.get_overlapping_areas():
-		if !(body.get_parent() is Projectile):
-			continue
-		body.get_parent().take_damage(Vector3.FORWARD.rotated(Vector3.UP, target.camera.rotation.y))
-		body.get_parent().rotation = target.camera.rotation
 
 func is_animation_ended() -> void:
 	if animation_player.is_playing():

@@ -17,12 +17,15 @@ class_name Player
 @onready var raycasts_pivot: Node3D = $Raycasts
 @onready var attack_area: Area3D = $CameraPivot/Camera3D/AttackArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var gun: Gun = $CameraPivot/Camera3D/Gun
 
 var jump_count: int = max_jump_count
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.fov = default_fov
+	gun.gun_owner = self
 
 func _physics_process(delta: float) -> void:
 	velocity.y -= gravity / (1 / Engine.time_scale)

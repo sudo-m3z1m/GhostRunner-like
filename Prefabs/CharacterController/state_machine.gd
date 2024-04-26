@@ -50,6 +50,3 @@ func change_time_state(new_state: STATES) -> void:
 		return
 	current_time_state = states[new_state]
 	current_time_state.enter_state(player)
-
-func shoot() -> void:
-	current_time_state.shoot()

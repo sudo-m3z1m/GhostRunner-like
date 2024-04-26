@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://biuvsontnmu4h"]
+[gd_scene load_steps=8 format=3 uid="uid://biuvsontnmu4h"]
 
 [ext_resource type="Script" path="res://Prefabs/enemy.gd" id="1_cscqk"]
+[ext_resource type="Script" path="res://Prefabs/health_component.gd" id="2_ayn2f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jit8v"]
 radius = 1.0
@@ -27,6 +28,9 @@ _data = {
 script = ExtResource("1_cscqk")
 speed = 140.0
 gravity = 1.2
+
+[node name="HealthComponent" type="Node3D" parent="."]
+script = ExtResource("2_ayn2f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jit8v")
