@@ -19,5 +19,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.589714, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0409272, 0, -1.70814)
 mesh = SubResource("BoxMesh_ucdvg")
 
+[node name="HealthComponent" parent="." index="1"]
+knockback_time = 0.1
+knockback_strength = 40.0
+
 [node name="ShotTimer" type="Timer" parent="." index="4"]
 autostart = true

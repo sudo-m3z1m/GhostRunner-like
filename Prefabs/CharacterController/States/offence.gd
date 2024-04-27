@@ -1,6 +1,7 @@
 extends AttackState
 
 @export var dash_attack_speed: float
+@export var attack_damage: int
 
 var attack_area: Area3D
 
@@ -14,7 +15,7 @@ func enter_state(target: Player, attack_state: State, animation_player: Animatio
 	start_attack()
 
 func update_state(delta: float) -> void:
-	#check_preys() #TODO need to make weapon_component for this stuff
+	is_area_trigerred() #TODO need to make weapon_component for this stuff
 	is_animation_ended()
 	
 	target.move_and_slide()
@@ -29,3 +30,10 @@ func is_animation_ended() -> void:
 	if animation_player.is_playing():
 		return
 	attack_state.change_attack_state()
+
+func is_area_trigerred() -> void:
+	for entity in attack_area.get_overlapping_bodies():
+		if entity is Enemy:
+			entity.health_component.apply_damage(attack_damage, target)
+		if entity is Projectile:
+			entity.shoot(target.gun.shot_raycast.get_collision_point())

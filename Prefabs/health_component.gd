@@ -1,20 +1,16 @@
 extends Node3D
 
 class_name HealthComponent
-#TODO This is will be centralized damage system.
+
 @export var max_health_points: int
-@export var knockback_strength: float
 
 @onready var target: Node3D = get_parent()
+@onready var health_points_count: int = max_health_points
 
-var health_points_count: int
-
-func apply_damage(direction: Vector3) -> void:
-	if health_points_count <= 1: 
+func apply_damage(damage: int, damage_dealer: Node3D) -> void:
+	health_points_count -= damage
+	if health_points_count <= 0:
 		die()
-		return
-	health_points_count -= 1
-	target.velocity = direction * knockback_strength
 
 func heal_up() -> void:
 	health_points_count = max_health_points

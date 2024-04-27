@@ -17,7 +17,7 @@ class_name Player
 @onready var raycasts_pivot: Node3D = $Raycasts
 @onready var attack_area: Area3D = $CameraPivot/Camera3D/AttackArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var health_component: HealthComponent = $HealthComponent
+#@onready var health_component: HealthComponent = $HealthComponent
 @onready var gun: Gun = $CameraPivot/Camera3D/Gun
 @onready var scope: Node3D = $CameraPivot/Camera3D/scope
 @onready var scope_pivot: Node3D = $CameraPivot/Camera3D/ScopePivot
@@ -41,9 +41,3 @@ func _physics_process(delta: float) -> void:
 func is_falling() -> void:
 	if !is_on_floor():
 		state_machine.change_state(StateMachine.STATES.FALLING)
-
-func kill() -> void:
-	get_tree().paused = true
-	
-	HUD.set_hud_visible("GameOver", true)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

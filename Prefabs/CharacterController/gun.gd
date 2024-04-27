@@ -30,7 +30,7 @@ func change_state(next_state: GUN_STATES) -> void:
 	current_state.enter_state(gun_owner)
 
 func shoot() -> void:
-	if current_state == states[GUN_STATES.GET_DOWN]:
+	if current_state != states[GUN_STATES.GET_UP]:
 		return
 	var projectile: Projectile = projectile_packed.instantiate()
 	animation_player.play(shoot_animation)

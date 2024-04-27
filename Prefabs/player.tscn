@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://Prefabs/CharacterController/state_machine.gd" id="2_ya1ud"]
 [ext_resource type="PackedScene" uid="uid://davpidau2xuae" path="res://Prefabs/CharacterController/gun.tscn" id="3_p4ykf"]
 [ext_resource type="PackedScene" uid="uid://bg5gx1wdlgxdy" path="res://Models/scope.glb" id="4_avonq"]
-[ext_resource type="Script" path="res://Prefabs/health_component.gd" id="4_oy38l"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/idle.gd" id="4_w3owe"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/moving.gd" id="5_cwlag"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/player_health_component.gd" id="5_q5ojs"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/jump.gd" id="6_4p4ke"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/dash.gd" id="7_kwa41"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/falling.gd" id="8_5n6il"]
@@ -212,7 +212,8 @@ target_position = Vector3(-1, 0, 0)
 collision_mask = 2
 
 [node name="HealthComponent" type="Node3D" parent="."]
-script = ExtResource("4_oy38l")
+script = ExtResource("5_q5ojs")
+max_health_points = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2868, 0)
@@ -275,6 +276,7 @@ one_shot = true
 [node name="Offence" type="Node" parent="StateMachine/Attack"]
 script = ExtResource("10_4l2tv")
 dash_attack_speed = 20.0
+attack_damage = 1
 animation = "Attack"
 
 [node name="Recovery" type="Node" parent="StateMachine/Attack"]
