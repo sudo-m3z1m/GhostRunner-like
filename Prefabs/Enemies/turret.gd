@@ -5,16 +5,14 @@ extends Enemy
 
 @onready var weapon_pivot: Node3D = $WeaponPivot
 @onready var weapon: MeshInstance3D = $WeaponPivot/MeshInstance3D
-@onready var cooldown_timer: Timer = $CooldownTimer
+@onready var shot_timer: Timer = $ShotTimer
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
 #TODO Need to rewrite enemy class and this class too.
 
 func _ready() -> void:
-	pass
-	#cooldown_timer.timeout.connect(shoot)
-	#cooldown_timer.wait_time = cooldown
-	#cooldown_timer.start()
+	shot_timer.timeout.connect(shoot)
+	shot_timer.start(cooldown)
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -26,4 +24,5 @@ func rotate_weapon() -> void:
 func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
 	get_tree().current_scene.add_child(projectile)
-	projectile.shoot(weapon.global_position, target.global_position)
+	projectile.global_position = weapon.global_position
+	projectile.shoot(target.global_position)

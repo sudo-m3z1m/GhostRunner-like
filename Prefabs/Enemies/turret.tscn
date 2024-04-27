@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy0n3is12khbf"]
 
 [ext_resource type="PackedScene" uid="uid://biuvsontnmu4h" path="res://Prefabs/enemy.tscn" id="1_shire"]
-[ext_resource type="Script" path="res://Prefabs/Enemies/default_enemy.gd" id="2_fmk10"]
+[ext_resource type="Script" path="res://Prefabs/Enemies/turret.gd" id="2_fmk10"]
 [ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="3_e35yb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ucdvg"]
 size = Vector3(0.3, 0.4, 1)
 
-[node name="DefaultEnemy" instance=ExtResource("1_shire")]
+[node name="Turret" instance=ExtResource("1_shire")]
 script = ExtResource("2_fmk10")
-cooldown = 2.0
+cooldown = 5.0
 projectile_packed = ExtResource("3_e35yb")
 
 [node name="WeaponPivot" type="Node3D" parent="." index="0"]
@@ -19,5 +19,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.589714, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0409272, 0, -1.70814)
 mesh = SubResource("BoxMesh_ucdvg")
 
-[node name="CooldownTimer" type="Timer" parent="." index="4"]
+[node name="ShotTimer" type="Timer" parent="." index="4"]
 autostart = true

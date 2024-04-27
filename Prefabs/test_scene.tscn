@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://h0odwfwje50w"]
 
 [ext_resource type="PackedScene" uid="uid://bljjoykcp0swp" path="res://Prefabs/player.tscn" id="1_20ea0"]
-[ext_resource type="PackedScene" uid="uid://dy0n3is12khbf" path="res://Prefabs/Enemies/default_enemy.tscn" id="3_n28ny"]
+[ext_resource type="PackedScene" uid="uid://dy0n3is12khbf" path="res://Prefabs/Enemies/turret.tscn" id="3_n28ny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43b2s"]
 albedo_color = Color(0.694118, 0.666667, 0.988235, 1)
@@ -71,9 +71,6 @@ size = Vector3(45.3819, 25.1724, 5.0752)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.7803, 16.5169, -137.263)
 size = Vector3(30.7023, 5.86914, 31.1689)
 
-[node name="DefaultEnemy" parent="." instance=ExtResource("3_n28ny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.7508, 15.7841)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.972333, 0.233598, 0, -0.233598, 0.972333, 0, 47.1823, 0)
 light_color = Color(0.745098, 0.807843, 1, 1)
@@ -84,3 +81,6 @@ sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7tny5")
+
+[node name="Turret" parent="." instance=ExtResource("3_n28ny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.7242, 12.9347)

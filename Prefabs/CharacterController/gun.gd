@@ -8,6 +8,7 @@ class_name Gun
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shot_position: Marker3D = $ShotPosition
+@onready var shot_raycast: RayCast3D = $ShotRaycast
 @onready var current_ammo_count: int = max_ammo_count
 @onready var states: Dictionary = {
 	GUN_STATES.GET_UP: $GetUpState,
@@ -31,4 +32,8 @@ func change_state(next_state: GUN_STATES) -> void:
 func shoot() -> void:
 	if current_state == states[GUN_STATES.GET_DOWN]:
 		return
+	var projectile: Projectile = projectile_packed.instantiate()
 	animation_player.play(shoot_animation)
+	get_tree().current_scene.add_child(projectile)
+	projectile.global_position = shot_position.global_position
+	projectile.shoot(shot_raycast.get_collision_point())
