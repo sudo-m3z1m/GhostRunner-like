@@ -16,7 +16,7 @@ height = 0.5
 
 [node name="Projectile" type="CharacterBody3D"]
 script = ExtResource("1_d3mbq")
-speed = 100.0
+speed = 40.0
 exist_time = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

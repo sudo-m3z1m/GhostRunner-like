@@ -8,7 +8,7 @@ func apply_damage(damage: int, damage_dealer: Node3D) -> void:
 	apply_knockback(damage_dealer.velocity.normalized())
 
 func die() -> void:
-	queue_free()
+	target.queue_free()
 
 func apply_knockback(direction: Vector3) -> void:
 	var knockback_timer: SceneTreeTimer = get_tree().create_timer(knockback_time)

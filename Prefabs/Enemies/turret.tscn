@@ -9,7 +9,7 @@ size = Vector3(0.3, 0.4, 1)
 
 [node name="Turret" instance=ExtResource("1_shire")]
 script = ExtResource("2_fmk10")
-cooldown = 5.0
+cooldown = 2.0
 projectile_packed = ExtResource("3_e35yb")
 
 [node name="WeaponPivot" type="Node3D" parent="." index="0"]

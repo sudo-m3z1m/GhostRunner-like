@@ -35,5 +35,6 @@ func is_area_trigerred() -> void:
 	for entity in attack_area.get_overlapping_bodies():
 		if entity is Enemy:
 			entity.health_component.apply_damage(attack_damage, target)
+			attack_state.change_attack_state()
 		if entity is Projectile:
 			entity.shoot(target.gun.shot_raycast.get_collision_point())

@@ -76,6 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 0.972333, 0.233598, 0, -0.233598, 0.972333, 
 light_color = Color(0.745098, 0.807843, 1, 1)
 shadow_enabled = true
 shadow_blur = 0.06
+directional_shadow_blend_splits = true
 directional_shadow_max_distance = 200.0
 sky_mode = 1
 
