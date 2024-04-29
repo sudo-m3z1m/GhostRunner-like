@@ -8,7 +8,7 @@ extends Enemy
 @onready var shot_timer: Timer = $ShotTimer
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
-#TODO Need to rewrite enemy class and this class too.
+#TODO Need to rewrite enemy class.
 
 func _ready() -> void:
 	shot_timer.timeout.connect(shoot)

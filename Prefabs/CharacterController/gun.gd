@@ -30,10 +30,13 @@ func change_state(next_state: GUN_STATES) -> void:
 	current_state.enter_state(gun_owner)
 
 func shoot() -> void:
-	if current_state != states[GUN_STATES.GET_UP]:
+	if current_state != states[GUN_STATES.GET_UP] or current_ammo_count == 0:
 		return
 	var projectile: Projectile = projectile_packed.instantiate()
 	animation_player.play(shoot_animation)
+	
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = shot_position.global_position
 	projectile.shoot(shot_raycast.get_collision_point())
+	
+	current_ammo_count -= 1
