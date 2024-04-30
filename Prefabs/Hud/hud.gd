@@ -5,6 +5,7 @@ class_name Hud
 @onready var game_over_hud: Panel = $MarginContainer/GameOverHud
 @onready var settings_menu: Panel = $MarginContainer/SettingsMenuPanel
 @onready var pause_menu: Panel = $MarginContainer/PauseMenu
+@onready var hp_bar: TextureProgressBar = $MarginContainer/HpBar
 @onready var hud_dict: Dictionary = {
 	"GameOver" : game_over_hud,
 	"Pause" : pause_menu,
@@ -26,3 +27,6 @@ func settings_clicked() -> void:
 
 func exit_clicked() -> void:
 	get_tree().quit(0)
+
+func set_hp_bar_value(new_hp_bar_value: int) -> void:
+	hp_bar.value = new_hp_bar_value

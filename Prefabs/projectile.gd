@@ -3,6 +3,7 @@ class_name Projectile
 
 @export var speed: float
 @export var exist_time: float
+@export var damage: int
 
 @onready var exist_timer: Timer = $Timer
 @onready var hurt_box_area: Area3D = $HurtBoxArea
@@ -17,5 +18,9 @@ func shoot(target_position: Vector3) -> void: #Probably need to redefine
 	velocity = direction * speed
 
 func is_collision_damagable() -> void:
-	if get_last_slide_collision():
-		queue_free()
+	if !get_last_slide_collision():
+		return
+	var collider: Object = get_last_slide_collision().get_collider()
+	if collider is Player:
+		collider.health_component.apply_damage(damage, self)
+	queue_free()

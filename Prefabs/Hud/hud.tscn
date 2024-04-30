@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://4src8hl7qndu"]
+[gd_scene load_steps=7 format=3 uid="uid://4src8hl7qndu"]
 
 [ext_resource type="PackedScene" uid="uid://dnif851vn3m0v" path="res://Prefabs/Hud/game_over_hud.tscn" id="1_qa2io"]
 [ext_resource type="Script" path="res://Prefabs/Hud/hud.gd" id="1_vbsyh"]
 [ext_resource type="PackedScene" uid="uid://ch68txdgouvqf" path="res://Prefabs/Hud/settings_menu.tscn" id="3_fm5r7"]
 [ext_resource type="PackedScene" uid="uid://catbbvxmjb7k3" path="res://Prefabs/Hud/pause_menu.tscn" id="4_ay6dj"]
+[ext_resource type="Texture2D" uid="uid://b60en7gd2io2l" path="res://Sprites/HP-bar-lower.png" id="5_ftuxc"]
+[ext_resource type="Texture2D" uid="uid://j48gq4ixhs00" path="res://Sprites/HP-bar-progress.png" id="6_ci7bi"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -38,3 +40,17 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="HpBar" type="TextureProgressBar" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.517647)
+texture_filter = 1
+custom_minimum_size = Vector2(200, 134)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+max_value = 33.0
+step = 11.0
+value = 33.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_ftuxc")
+texture_progress = ExtResource("6_ci7bi")
