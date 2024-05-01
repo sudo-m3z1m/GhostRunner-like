@@ -177,9 +177,6 @@ max_jump_count = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906, 0)
 current = true
 
-[node name="Marker3D" type="Marker3D" parent="CameraPivot/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.00497)
-
 [node name="AttackArea" type="Area3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0449936, -1.28663)
 
@@ -305,7 +302,7 @@ animation = "GetGun"
 
 [node name="SlowedTime" type="Node" parent="StateMachine"]
 script = ExtResource("16_h36n2")
-slow_time_ratio = 2.0
+slow_time_ratio = 5.0
 animation = "GetGun"
 accepted_states = Array[int]([8])
 

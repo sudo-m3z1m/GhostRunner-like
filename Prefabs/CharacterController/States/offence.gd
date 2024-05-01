@@ -21,8 +21,8 @@ func update_state(delta: float) -> void:
 	target.move_and_slide()
 
 func start_attack() -> void:
-	var direction: Vector3
-	direction = target.camera.global_position.direction_to(target.dash_marker.global_position)
+	var direction: Vector3 = Vector3.FORWARD
+	direction *= target.camera.quaternion.inverse()
 	target.velocity += direction * dash_attack_speed
 	target.velocity.y = clamp(target.velocity.y, -MAX_VERTICLE_VELOCITY, MAX_VERTICLE_VELOCITY)
 

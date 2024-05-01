@@ -10,7 +10,6 @@ class_name Player
 
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 @onready var camera_pivot: Node3D = $CameraPivot
-@onready var dash_marker: Marker3D = $CameraPivot/Camera3D/Marker3D
 @onready var input_handler: InputHandler = $InputHandler
 @onready var state_machine: StateMachine = $StateMachine
 @onready var raycasts: Array[Node] = $Raycasts.get_children()
@@ -29,7 +28,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.fov = default_fov
 	gun.gun_owner = self
-
+ 
 func _physics_process(delta: float) -> void:
 	velocity.y -= gravity / (1 / Engine.time_scale)
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))

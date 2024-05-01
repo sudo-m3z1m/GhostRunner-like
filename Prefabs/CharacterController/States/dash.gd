@@ -30,9 +30,9 @@ func exit_state(next_state: StateMachine.STATES) -> bool:
 	return false
 
 func start_dash() -> void:
-	var direction: Vector3
-	direction = target.camera.global_position.direction_to(target.dash_marker.global_position)
-
+	var direction: Vector3 = Vector3.FORWARD
+	direction *= target.camera.quaternion.inverse()
+	
 	target.velocity = direction * dash_speed
 
 	target.velocity.y = clamp(target.velocity.y, -MAX_VERTICLE_DASH_LENGTH, MAX_VERTICLE_DASH_LENGTH)

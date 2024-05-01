@@ -11,6 +11,7 @@ size = Vector3(0.3, 0.4, 1)
 script = ExtResource("2_fmk10")
 cooldown = 2.0
 projectile_packed = ExtResource("3_e35yb")
+target_max_speed = 40.0
 
 [node name="WeaponPivot" type="Node3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.589714, 0)
