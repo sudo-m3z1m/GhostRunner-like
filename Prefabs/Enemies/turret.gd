@@ -24,7 +24,25 @@ func rotate_weapon() -> void:
 
 func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
-	var target_direction: Vector3 = target.velocity.normalized()
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = weapon.global_position
-	projectile.shoot(target.global_position)
+	projectile.shoot(find_target_position(projectile))
+
+func find_target_position(projectile: Projectile) -> Vector3:
+	var target_direction: Vector3 = target.velocity.normalized()
+	var projectile_speed: float = projectile.speed
+	var sphere_radius: float
+	var max_sphere_radius: float = 100000
+
+	var virtual_target_position = target.global_position
+	var len_to_virtual_target: float
+	
+	while sphere_radius < max_sphere_radius:
+		len_to_virtual_target = (global_position - virtual_target_position).length()
+		if sphere_radius >= len_to_virtual_target:
+			return virtual_target_position
+		sphere_radius += projectile_speed
+		virtual_target_position += target_direction * target_max_speed
+		prints("Projectile radius:", sphere_radius, "Length to target:", len_to_virtual_target)
+
+	return target.global_position
