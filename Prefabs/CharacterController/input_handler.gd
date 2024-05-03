@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	add_direction()
 
 func _unhandled_input(event) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !get_tree().paused:
 		target.camera.rotation.y -= event.relative.x * sensintivity
 		target.camera.rotation.x -= event.relative.y * sensintivity
 		target.raycasts_pivot.rotation.y = target.camera.rotation.y

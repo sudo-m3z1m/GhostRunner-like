@@ -26,7 +26,17 @@ func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = weapon.global_position
+	#projectile.velocity = find_shoot_direction(projectile) * projectile.speed
 	projectile.shoot(find_target_position(projectile))
+
+#func find_shoot_direction(projectile: Projectile) -> Vector3:
+	#var relative_target_pos: Vector3 = target.global_position - global_position
+	#var target_movement_vector: Vector3 = relative_target_pos.normalized()
+	#
+	#var normalized_bullet_movement_vector: Vector3 = (relative_target_pos.normalized()\
+	 #* (projectile.speed - target_max_speed) + target_movement_vector * target_max_speed) / projectile.speed
+	#
+	#return normalized_bullet_movement_vector
 
 func find_target_position(projectile: Projectile) -> Vector3:
 	var target_direction: Vector3 = target.velocity.normalized()
@@ -43,6 +53,5 @@ func find_target_position(projectile: Projectile) -> Vector3:
 			return virtual_target_position
 		sphere_radius += projectile_speed
 		virtual_target_position += target_direction * target_max_speed
-		prints("Projectile radius:", sphere_radius, "Length to target:", len_to_virtual_target)
 
 	return target.global_position

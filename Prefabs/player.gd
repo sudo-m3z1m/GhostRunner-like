@@ -34,8 +34,8 @@ func _physics_process(delta: float) -> void:
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))
 	var vector_to_target: Vector3 = camera.global_position - turret.global_position
 	scope_pivot.look_at(turret.global_position)
-	scope.rotation.y = scope_pivot.rotation.y
-	scope.rotation_degrees.x = -1 / (vector_to_target.limit_length(100)).length() * 600
+	scope.rotation.y = atan2(to_local(turret.global_position).x, to_local(turret.global_position).z)
+	#scope.rotation_degrees.x = -1 / (vector_to_target.limit_length(100)).length() * 600
 
 func is_falling() -> void:
 	if !is_on_floor():
