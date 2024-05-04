@@ -26,32 +26,24 @@ func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = weapon.global_position
-	#projectile.velocity = find_shoot_direction(projectile) * projectile.speed
 	projectile.shoot(find_target_position(projectile))
 
-#func find_shoot_direction(projectile: Projectile) -> Vector3:
-	#var relative_target_pos: Vector3 = target.global_position - global_position
-	#var target_movement_vector: Vector3 = relative_target_pos.normalized()
-	#
-	#var normalized_bullet_movement_vector: Vector3 = (relative_target_pos.normalized()\
-	 #* (projectile.speed - target_max_speed) + target_movement_vector * target_max_speed) / projectile.speed
-	#
-	#return normalized_bullet_movement_vector
-
 func find_target_position(projectile: Projectile) -> Vector3:
-	var target_direction: Vector3 = target.velocity.normalized()
-	var projectile_speed: float = projectile.speed
-	var sphere_radius: float
-	var max_sphere_radius: float = 100000
+	var Sb: float = projectile.speed
+	var T: Vector3 = target.global_position - global_position
+	var Vt: Vector3 = target.velocity
+	var _b: float = (T.x * Vt.x + T.y * Vt.y + T.z * Vt.z)
+	var _E: float = sqrt((T.x * Vt.x + T.y * Vt.y + T.z * Vt.z) ** 2 + (Sb ** 2 - Vt.x ** 2 - Vt.y ** 2 - Vt.z ** 2)\
+	 * (T.x ** 2 + T.y ** 2 + T.z ** 2))
+	var _a = (Sb ** 2 - Vt.x ** 2 - Vt.y ** 2 - Vt.z ** 2)
+	var t_1: float = (_b + _E) / _a
+	var t_2: float = (_b - _E) / _a
+	var t: float = 0
 
-	var virtual_target_position = target.global_position
-	var len_to_virtual_target: float
-	
-	while sphere_radius < max_sphere_radius:
-		len_to_virtual_target = (global_position - virtual_target_position).length()
-		if sphere_radius >= len_to_virtual_target:
-			return virtual_target_position
-		sphere_radius += projectile_speed
-		virtual_target_position += target_direction * target_max_speed
+	if t_1 >= 0 and t_2 >= 0:
+		t = minf(t_1, t_2)
+	else:
+		t = maxf(t_1, t_2)
+	var Vb = T / t + Vt
 
-	return target.global_position
+	return global_position + Vb
