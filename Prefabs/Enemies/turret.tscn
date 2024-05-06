@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy0n3is12khbf"]
+[gd_scene load_steps=6 format=3 uid="uid://dy0n3is12khbf"]
 
 [ext_resource type="PackedScene" uid="uid://biuvsontnmu4h" path="res://Prefabs/enemy.tscn" id="1_shire"]
 [ext_resource type="Script" path="res://Prefabs/Enemies/turret.gd" id="2_fmk10"]
 [ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="3_e35yb"]
 [ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="4_a684d"]
+[ext_resource type="PackedScene" uid="uid://bwq2at2x86awc" path="res://Prefabs/Enemies/turret_body.tscn" id="5_yps7y"]
 
 [node name="Turret" instance=ExtResource("1_shire")]
 script = ExtResource("2_fmk10")
@@ -20,6 +21,8 @@ transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 
 [node name="HealthComponent" parent="." index="1"]
 knockback_time = 0.1
 knockback_strength = 40.0
+death_body_packed = ExtResource("5_yps7y")
+max_health_points = 1
 
 [node name="ShotTimer" type="Timer" parent="." index="4"]
 autostart = true
