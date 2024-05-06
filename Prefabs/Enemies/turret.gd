@@ -5,7 +5,7 @@ extends Enemy
 @export var target_max_speed: float
 
 @onready var weapon_pivot: Node3D = $WeaponPivot
-@onready var weapon: MeshInstance3D = $WeaponPivot/MeshInstance3D
+@onready var weapon: Node3D = $WeaponPivot/weapon
 @onready var shot_timer: Timer = $ShotTimer
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
@@ -32,18 +32,22 @@ func find_target_position(projectile: Projectile) -> Vector3:
 	var Sb: float = projectile.speed
 	var T: Vector3 = target.global_position - global_position
 	var Vt: Vector3 = target.velocity
-	var _b: float = (T.x * Vt.x + T.y * Vt.y + T.z * Vt.z)
-	var _E: float = sqrt((T.x * Vt.x + T.y * Vt.y + T.z * Vt.z) ** 2 + (Sb ** 2 - Vt.x ** 2 - Vt.y ** 2 - Vt.z ** 2)\
-	 * (T.x ** 2 + T.y ** 2 + T.z ** 2))
-	var _a = (Sb ** 2 - Vt.x ** 2 - Vt.y ** 2 - Vt.z ** 2)
+
+	var t: float = 0
+	var _a: float = Sb ** 2 - Vt.dot(Vt)
+	var _b: float = T.dot(Vt)
+	var _E: float = sqrt(_b ** 2 + _a * T.dot(T))
+
 	var t_1: float = (_b + _E) / _a
 	var t_2: float = (_b - _E) / _a
-	var t: float = 0
 
 	if t_1 >= 0 and t_2 >= 0:
 		t = minf(t_1, t_2)
-	else:
+	elif t_1 >= 0 or t_2 >= 0:
 		t = maxf(t_1, t_2)
+	else:
+		return projectile.global_position + T
+
 	var Vb = T / t + Vt
 
 	return global_position + Vb
