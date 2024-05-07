@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ci685wtqflj2q"]
+
+[node name="Corpse" type="RigidBody3D"]
+linear_damp = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -2,7 +2,7 @@ extends HealthComponent
 
 @export var knockback_time: float
 @export var knockback_strength: float
-@export var death_body_packed: PackedScene
+@export var corpse_packed: PackedScene
 
 var knockback_direction: Vector3
 
@@ -12,18 +12,32 @@ func apply_damage(damage: int, damage_dealer: Node3D) -> void:
 	apply_knockback(knockback_direction)
 
 func die() -> void:
-	var death_body: RigidBody3D = death_body_packed.instantiate() #TODO Need to generate body because i will can slide enemies
-	get_tree().current_scene.add_child(death_body)
-	death_body.global_position = target.global_position
-	death_body.apply_central_impulse(knockback_direction * 70) #TODO And need to remade this for more dynamicly impulse adding
+	var corpse: RigidBody3D = create_corpse()
+	corpse.global_position = global_position
+	corpse.apply_central_impulse(knockback_direction * 70)
 
 	target.queue_free()
 
 func apply_knockback(direction: Vector3) -> void:
 	var knockback_timer: SceneTreeTimer = get_tree().create_timer(knockback_time)
 	knockback_timer.timeout.connect(reset_knockback)
-	
+
 	target.velocity = direction * knockback_strength
 
 func reset_knockback() -> void:
 	target.velocity = Vector3.ZERO #I know, need to integrate this to state machine but not now
+
+func create_corpse() -> RigidBody3D:
+	var corpse: RigidBody3D = corpse_packed.instantiate()
+	var target_mesh: MeshInstance3D = target.get_node("MeshInstance3D")
+	var corpse_mesh: MeshInstance3D
+	var new_corpse_collision_shape: CollisionShape3D = CollisionShape3D.new()
+
+	get_tree().current_scene.add_child(corpse)
+	corpse_mesh = corpse.get_node("MeshInstance3D")
+
+	corpse_mesh.mesh = target_mesh.mesh
+	new_corpse_collision_shape.shape = target_mesh.mesh.create_convex_shape(true, true)
+	corpse.add_child(new_corpse_collision_shape)
+
+	return corpse
