@@ -20,8 +20,9 @@ transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 
 
 [node name="HealthComponent" parent="." index="1"]
 knockback_time = 0.1
-knockback_strength = 40.0
+knockback_strength = 50.0
 corpse_packed = ExtResource("5_3pwcl")
+max_y_direction = 0.5
 max_health_points = 1
 
 [node name="ShotTimer" type="Timer" parent="." index="4"]

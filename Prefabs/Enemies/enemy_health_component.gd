@@ -3,18 +3,20 @@ extends HealthComponent
 @export var knockback_time: float
 @export var knockback_strength: float
 @export var corpse_packed: PackedScene
+@export_range(0, 1) var max_y_direction: float
 
 var knockback_direction: Vector3
 
 func apply_damage(damage: int, damage_dealer: Node3D) -> void:
 	knockback_direction = damage_dealer.velocity.normalized()
+	knockback_direction.y = randf_range(0, max_y_direction)
 	super(damage, damage_dealer)
 	apply_knockback(knockback_direction)
 
 func die() -> void:
 	var corpse: RigidBody3D = create_corpse()
 	corpse.global_position = global_position
-	corpse.apply_central_impulse(knockback_direction * 70)
+	corpse.apply_central_impulse((knockback_direction) * knockback_strength)
 
 	target.queue_free()
 

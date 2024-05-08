@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ci685wtqflj2q"]
 
 [node name="Corpse" type="RigidBody3D"]
+gravity_scale = 3.0
 linear_damp = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
