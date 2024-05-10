@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuovwnuu4r7mo"]
+
+[ext_resource type="Script" path="res://Prefabs/trap.gd" id="1_ocg57"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gvxef"]
+height = 6.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tv2uw"]
+height = 6.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cpasu"]
+height = 6.0
+radius = 0.7
+
+[node name="Trap" type="RigidBody3D"]
+script = ExtResource("1_ocg57")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_gvxef")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_tv2uw")
+
+[node name="HurtBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_cpasu")

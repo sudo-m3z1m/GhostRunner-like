@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctahcpe55fhd6"]
-
-[ext_resource type="Script" path="res://Prefabs/interective_component.gd" id="1_t0gt7"]
-
-[node name="InteractiveComponent" type="Node3D"]
-script = ExtResource("1_t0gt7")
