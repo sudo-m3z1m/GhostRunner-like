@@ -22,5 +22,5 @@ func is_collision_damagable() -> void:
 		return
 	var collider: Object = get_last_slide_collision().get_collider()
 	if collider is Player:
-		collider.health_component.apply_damage(damage, self)
+		collider.health_component.apply_damage(damage)
 	queue_free()

@@ -32,9 +32,11 @@ func is_animation_ended() -> void:
 	attack_state.change_attack_state()
 
 func is_area_trigerred() -> void:
+	var knockback_direction: Vector3 = target.velocity.normalized()
+	knockback_direction.y = randf()
 	for entity in attack_area.get_overlapping_bodies():
 		if entity is Enemy:
-			entity.health_component.apply_damage(attack_damage, target)
+			entity.health_component.apply_damage(attack_damage, knockback_direction)
 			attack_state.change_attack_state()
 		if entity is Projectile:
 			entity.shoot(target.gun.shot_raycast.get_collision_point())

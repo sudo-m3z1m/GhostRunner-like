@@ -1,7 +1,7 @@
 extends HealthComponent
 
-func apply_damage(damage: int, damage_dealer: Node3D) -> void:
-	super(damage, damage_dealer)
+func apply_damage(damage: int, knockback_direction: Vector3 = Vector3.ZERO) -> void:
+	super(damage, knockback_direction)
 	HUD.set_hp_bar_value(health_points_count)
 
 func die() -> void:

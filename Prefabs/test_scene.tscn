@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://h0odwfwje50w"]
+[gd_scene load_steps=8 format=3 uid="uid://h0odwfwje50w"]
 
 [ext_resource type="PackedScene" uid="uid://bljjoykcp0swp" path="res://Prefabs/player.tscn" id="1_20ea0"]
+[ext_resource type="PackedScene" uid="uid://cuovwnuu4r7mo" path="res://Prefabs/trap.tscn" id="2_8qxu2"]
 [ext_resource type="PackedScene" uid="uid://dy0n3is12khbf" path="res://Prefabs/Enemies/turret.tscn" id="3_n28ny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43b2s"]
@@ -83,5 +84,10 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7tny5")
 
+[node name="Trap" parent="." instance=ExtResource("2_8qxu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0546, 2.77723, 80.2847)
+gravity_scale = 0.0
+linear_velocity = Vector3(0, 0, 15)
+
 [node name="Turret" parent="." instance=ExtResource("3_n28ny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39709, 12.9347)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0546, 3.39709, 109.789)

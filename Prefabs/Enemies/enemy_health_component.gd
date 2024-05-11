@@ -7,10 +7,9 @@ extends HealthComponent
 
 var knockback_direction: Vector3
 
-func apply_damage(damage: int, damage_dealer: Node3D) -> void:
-	knockback_direction = damage_dealer.velocity.normalized()
-	knockback_direction.y = randf_range(0, max_y_direction)
-	super(damage, damage_dealer)
+func apply_damage(damage: int, knockback_direction: Vector3 = Vector3.ZERO) -> void:
+	self.knockback_direction = knockback_direction
+	super(damage, knockback_direction)
 	apply_knockback(knockback_direction)
 
 func die() -> void:
