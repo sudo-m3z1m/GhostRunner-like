@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=29 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/state_machine.gd" id="2_ya1ud"]
 [ext_resource type="PackedScene" uid="uid://davpidau2xuae" path="res://Prefabs/CharacterController/gun.tscn" id="3_p4ykf"]
+[ext_resource type="PackedScene" uid="uid://dpflwq2d1g2ei" path="res://Models/scope.glb" id="4_715h6"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/idle.gd" id="4_w3owe"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/moving.gd" id="5_cwlag"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/player_health_component.gd" id="5_q5ojs"]
@@ -188,6 +189,9 @@ transform = Transform3D(-0.0996507, -0.00822365, 0.00145008, 2.76108e-10, 0.0173
 
 [node name="Gun" parent="CameraPivot/Camera3D" instance=ExtResource("3_p4ykf")]
 
+[node name="scope" parent="CameraPivot/Camera3D" instance=ExtResource("4_715h6")]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, -0.783935)
+
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
 
@@ -256,7 +260,7 @@ one_shot = true
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("11_ppd77")
-cooldown = 2.0
+cooldown = 0.5
 animation = "Attack"
 accepted_states = Array[int]([3])
 

@@ -85,9 +85,7 @@ sky_mode = 1
 environment = SubResource("Environment_7tny5")
 
 [node name="Trap" parent="." instance=ExtResource("2_8qxu2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0546, 2.77723, 80.2847)
-gravity_scale = 0.0
-linear_velocity = Vector3(0, 0, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6513, 79.5388, 80.2847)
 
 [node name="Turret" parent="." instance=ExtResource("3_n28ny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0546, 3.39709, 109.789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0546, 3.39709, 80.7512)

@@ -5,7 +5,7 @@ extends AttackState
 
 var attack_area: Area3D
 
-const MAX_VERTICLE_VELOCITY: float = 20
+const MAX_VERTICLE_VELOCITY: float = 30
 
 func enter_state(target: Player, attack_state: State, animation_player: AnimationPlayer) -> void:
 	super(target, attack_state, animation_player)
@@ -33,7 +33,7 @@ func is_animation_ended() -> void:
 
 func is_area_trigerred() -> void:
 	var knockback_direction: Vector3 = target.velocity.normalized()
-	knockback_direction.y = randf()
+	knockback_direction.y = randf_range(0.1, 0.5)
 	for entity in attack_area.get_overlapping_bodies():
 		if entity is Enemy:
 			entity.health_component.apply_damage(attack_damage, knockback_direction)
