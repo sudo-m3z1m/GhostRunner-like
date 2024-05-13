@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://h0odwfwje50w"]
+[gd_scene load_steps=9 format=3 uid="uid://h0odwfwje50w"]
 
 [ext_resource type="PackedScene" uid="uid://bljjoykcp0swp" path="res://Prefabs/player.tscn" id="1_20ea0"]
 [ext_resource type="PackedScene" uid="uid://cuovwnuu4r7mo" path="res://Prefabs/trap.tscn" id="2_8qxu2"]
 [ext_resource type="PackedScene" uid="uid://dy0n3is12khbf" path="res://Prefabs/Enemies/turret.tscn" id="3_n28ny"]
+[ext_resource type="PackedScene" uid="uid://bpwq7khiadrm7" path="res://Models/player.glb" id="4_wdcr0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43b2s"]
 albedo_color = Color(0.694118, 0.666667, 0.988235, 1)
@@ -89,3 +90,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6513, 79.5388, 80.2847)
 
 [node name="Turret" parent="." instance=ExtResource("3_n28ny")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0546, 3.39709, 80.7512)
+
+[node name="player" parent="." instance=ExtResource("4_wdcr0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 20.9448, 15.8868)
