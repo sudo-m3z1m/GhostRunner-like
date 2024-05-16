@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Prefabs/Enemies/enemy_health_component.gd" id="2_ug257"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jit8v"]
-radius = 1.0
+radius = 0.52609
 height = 3.93178
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tpt5g"]

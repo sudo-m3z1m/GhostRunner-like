@@ -4,7 +4,7 @@ extends Enemy
 @export var projectile_packed: PackedScene
 @export var target_max_speed: float
 
-#@onready var weapon: Node3D = $WeaponPivot/weapon
+@onready var weapon: Node3D = $enemy/Armature/Skeleton3D/BoneAttachment3D/weapon
 @onready var shot_timer: Timer = $ShotTimer
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
@@ -16,15 +16,17 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	#rotate_weapon()
+	rotate_weapon()
 
-#func rotate_weapon() -> void:
-	#weapon_pivot.look_at(target.global_position)
+func rotate_weapon() -> void:
+	var local_target_position: Vector3 = target.global_position - global_position
+	$enemy.rotation.y = atan(local_target_position.x / local_target_position.z)
+	print($enemy.rotation_degrees.y)
 
 func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
 	get_tree().current_scene.add_child(projectile)
-	#projectile.global_position = weapon.global_position
+	projectile.global_position = weapon.global_position
 	projectile.shoot(find_target_position(projectile))
 
 func find_target_position(projectile: Projectile) -> Vector3:

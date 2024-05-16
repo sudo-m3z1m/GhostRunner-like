@@ -88,4 +88,4 @@ environment = SubResource("Environment_7tny5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6513, 79.5388, 80.2847)
 
 [node name="Turret" parent="." instance=ExtResource("3_n28ny")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.42449, 100.718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42449, 100.718)
