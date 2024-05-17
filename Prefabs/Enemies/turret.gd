@@ -3,7 +3,7 @@ extends Enemy
 @export var cooldown: float
 @export var projectile_packed: PackedScene
 @export var target_max_speed: float
-@export var max_rotation_angle: float
+@export var rotation_field: float
 
 @onready var weapon: Node3D = $enemy/Armature/Skeleton3D/BoneAttachment3D/weapon
 @onready var shot_timer: Timer = $ShotTimer
@@ -26,7 +26,7 @@ func rotate_weapon() -> void:
 	spine_marker.rotation.y = atan(local_target_position.x / local_target_position.z) - PI * int(local_target_position.z < 0)
 	spine_marker.rotation.y -= deg_to_rad(45)
 	spine_marker.rotation_degrees.y = clamp(spine_marker.rotation_degrees.y, \
-	-45 - max_rotation_angle, -45 + max_rotation_angle)
+	-45 - rotation_field / 2, -45 + rotation_field / 2)
 	print(spine_marker.rotation_degrees.y)
 
 func shoot() -> void:
