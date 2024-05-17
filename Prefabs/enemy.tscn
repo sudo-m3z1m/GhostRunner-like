@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jit8v"]
 radius = 0.52609
-height = 3.93178
+height = 2.80971
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tpt5g"]
 radius = 1.0

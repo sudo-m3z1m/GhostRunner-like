@@ -3,9 +3,11 @@ extends Enemy
 @export var cooldown: float
 @export var projectile_packed: PackedScene
 @export var target_max_speed: float
+@export var max_rotation_angle: float
 
 @onready var weapon: Node3D = $enemy/Armature/Skeleton3D/BoneAttachment3D/weapon
 @onready var shot_timer: Timer = $ShotTimer
+@onready var spine_marker: Marker3D = $SpineMarker
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
 #TODO Need to rewrite enemy class.
@@ -13,6 +15,7 @@ extends Enemy
 func _ready() -> void:
 	shot_timer.timeout.connect(shoot)
 	shot_timer.start(cooldown)
+	$enemy/Armature/Skeleton3D/SkeletonIK3D.start()
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -20,8 +23,11 @@ func _physics_process(delta: float) -> void:
 
 func rotate_weapon() -> void:
 	var local_target_position: Vector3 = target.global_position - global_position
-	$enemy.rotation.y = atan(local_target_position.x / local_target_position.z)
-	print($enemy.rotation_degrees.y)
+	spine_marker.rotation.y = atan(local_target_position.x / local_target_position.z) - PI * int(local_target_position.z < 0)
+	spine_marker.rotation.y -= deg_to_rad(45)
+	spine_marker.rotation_degrees.y = clamp(spine_marker.rotation_degrees.y, \
+	-45 - max_rotation_angle, -45 + max_rotation_angle)
+	print(spine_marker.rotation_degrees.y)
 
 func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
