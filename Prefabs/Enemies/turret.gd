@@ -8,6 +8,7 @@ extends Enemy
 @onready var weapon: Node3D = $enemy/Armature/Skeleton3D/BoneAttachment3D/weapon
 @onready var shot_timer: Timer = $ShotTimer
 @onready var spine_marker: Marker3D = $SpineMarker
+@onready var model: Node3D = $enemy
 @onready var target: Player = get_tree().current_scene.get_node("Player")
 
 #TODO Need to rewrite enemy class.
@@ -24,10 +25,14 @@ func _physics_process(delta: float) -> void:
 
 func rotate_weapon() -> void:
 	var local_target_position: Vector3 = target.global_position - global_position
+	var model_rotation_y: float = model.rotation_degrees.y - 45
+	
+	if spine_marker.rotation_degrees.y > model_rotation_y + rotation_field / 2 or \
+	spine_marker.rotation_degrees.y < model_rotation_y - rotation_field:
+		model.rotation_degrees.y = spine_marker.rotation_degrees.y + 45
+	
 	spine_marker.rotation.y = atan(local_target_position.x / local_target_position.z) - PI * int(local_target_position.z < 0)
 	spine_marker.rotation.y -= deg_to_rad(45)
-	spine_marker.rotation_degrees.y = clamp(spine_marker.rotation_degrees.y, \
-	-45 - rotation_field / 2, -45 + rotation_field / 2)
 
 func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()
