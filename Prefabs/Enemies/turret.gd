@@ -16,6 +16,7 @@ func _ready() -> void:
 	shot_timer.timeout.connect(shoot)
 	shot_timer.start(cooldown)
 	$enemy/Armature/Skeleton3D/SkeletonIK3D.start()
+	$enemy/Armature/Skeleton3D.physical_bones_start_simulation()
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -27,7 +28,6 @@ func rotate_weapon() -> void:
 	spine_marker.rotation.y -= deg_to_rad(45)
 	spine_marker.rotation_degrees.y = clamp(spine_marker.rotation_degrees.y, \
 	-45 - rotation_field / 2, -45 + rotation_field / 2)
-	print(spine_marker.rotation_degrees.y)
 
 func shoot() -> void:
 	var projectile: Projectile = projectile_packed.instantiate()

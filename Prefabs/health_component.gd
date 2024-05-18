@@ -10,12 +10,12 @@ class_name HealthComponent
 func apply_damage(damage: int, knockback_direction: Vector3 = Vector3.ZERO) -> void:
 	health_points_count -= damage
 	if health_points_count <= 0:
-		die()
+		die(knockback_direction)
 
 func heal_up() -> void:
 	health_points_count = max_health_points
 
-func die() -> void:
+func die(knockback_direction: Vector3 = Vector3.ZERO) -> void:
 	pass
 
 func apply_knockback(direction: Vector3) -> void:

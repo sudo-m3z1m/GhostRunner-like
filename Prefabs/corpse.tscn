@@ -4,4 +4,6 @@
 gravity_scale = 3.0
 linear_damp = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]

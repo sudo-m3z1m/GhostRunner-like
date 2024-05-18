@@ -4,7 +4,7 @@ func apply_damage(damage: int, knockback_direction: Vector3 = Vector3.ZERO) -> v
 	super(damage, knockback_direction)
 	HUD.set_hp_bar_value(health_points_count)
 
-func die() -> void:
+func die(knockback_direction: Vector3 = Vector3.ZERO) -> void:
 	get_tree().paused = true
 	
 	HUD.set_hud_visible("GameOver", true)
