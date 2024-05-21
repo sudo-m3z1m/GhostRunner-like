@@ -277,7 +277,7 @@ animation = "Recovery"
 script = ExtResource("8_5n6il")
 speed = 40.0
 acceleration = 0.1
-accepted_states = Array[int]([2, 6, 4])
+accepted_states = Array[int]([2, 6, 4, 5])
 
 [node name="WallRun" type="Node" parent="StateMachine"]
 script = ExtResource("9_km4t3")

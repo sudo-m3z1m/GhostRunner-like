@@ -20,6 +20,7 @@ class_name Player
 @onready var gun: Gun = $CameraPivot/Camera3D/Gun
 
 var jump_count: int = max_jump_count
+var prev_raycasts_states: Array[bool] = [false, false]
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -30,6 +31,20 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= gravity / (1 / Engine.time_scale)
 	camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(camera_max_degrees), deg_to_rad(camera_max_degrees))
 
+	check_raycasts_collision()
+	copy_raycasts_collisions()
+
 func is_falling() -> void:
 	if !is_on_floor():
 		state_machine.change_state(StateMachine.STATES.FALLING)
+
+func check_raycasts_collision() -> void:
+	for raycast_index in raycasts.size():
+		if raycasts[raycast_index].is_colliding() == prev_raycasts_states[raycast_index] or \
+		raycasts[raycast_index].is_colliding() == false:
+			continue
+		state_machine.change_state(StateMachine.STATES.WALLRUN)
+
+func copy_raycasts_collisions() -> void:
+	for raycast_index in raycasts.size():
+		prev_raycasts_states[raycast_index] = raycasts[raycast_index].is_colliding()
