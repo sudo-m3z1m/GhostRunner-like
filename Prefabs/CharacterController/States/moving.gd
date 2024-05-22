@@ -14,10 +14,10 @@ func update_state(delta: float) -> void:
 	target.is_falling()
 	direction = state_machine.direction
 	direction = direction.rotated(Vector3.UP, target.camera.rotation.y)
-	
+
 	target.velocity.x = lerp(target.velocity.x, direction.x * max_speed, acceleration)
 	target.velocity.z = lerp(target.velocity.z, direction.z * max_speed, acceleration)
-	
+
 	rotate_camera()
 	target.move_and_slide()
 

@@ -29,6 +29,33 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Blade_low": {
+"mesh_instance/layers": 2
+},
+"PATH:Collar_low": {
+"mesh_instance/layers": 2
+},
+"PATH:Guard_low": {
+"mesh_instance/layers": 2
+},
+"PATH:HandleButtons_low": {
+"mesh_instance/layers": 2
+},
+"PATH:HandleThread_low": {
+"mesh_instance/layers": 2
+},
+"PATH:Handle_low": {
+"mesh_instance/layers": 2
+},
+"PATH:Pommel_low": {
+"mesh_instance/layers": 2
+},
+"PATH:PreHandle_low": {
+"mesh_instance/layers": 2
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
