@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=31 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
@@ -161,6 +161,18 @@ _data = {
 "Shoot": SubResource("Animation_177ak")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mas1p"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0.3, 0)
+scale_min = 0.6
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2bwyq"]
+albedo_color = Color(0.835294, 0.54902, 0.266667, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ob8g"]
+material = SubResource("ORMMaterial3D_2bwyq")
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_p0jtv")
 default_fov = 90.0
@@ -182,6 +194,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CameraPivot/SubViewportContainer"]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
@@ -190,6 +203,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19495, -0.216409)
 cull_mask = 2
 current = true
 fov = 90.0
+
+[node name="scope" parent="CameraPivot/SubViewportContainer/SubViewport/WeaponCamera" instance=ExtResource("4_715h6")]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, -0.00139797, -0.74428)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906, 0)
@@ -207,9 +223,6 @@ shape = SubResource("BoxShape3D_w0ohi")
 transform = Transform3D(-0.0996507, -0.00822365, 0.00145008, 2.76108e-10, 0.0173651, 0.0984808, -0.00835052, 0.0981367, -0.0173045, -0.000955343, -0.278167, -0.633316)
 
 [node name="Gun" parent="CameraPivot/Camera3D" instance=ExtResource("3_p4ykf")]
-
-[node name="scope" parent="CameraPivot/Camera3D" instance=ExtResource("4_715h6")]
-transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, -0.783935)
 
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
@@ -321,3 +334,11 @@ accepted_states = Array[int]([8])
 libraries = {
 "": SubResource("AnimationLibrary_n3mh0")
 }
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.672016, 0)
+amount = 2
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mas1p")
+draw_pass_1 = SubResource("SphereMesh_4ob8g")
