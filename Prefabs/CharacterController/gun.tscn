@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://davpidau2xuae"]
+[gd_scene load_steps=11 format=3 uid="uid://davpidau2xuae"]
 
 [ext_resource type="Script" path="res://Prefabs/CharacterController/gun.gd" id="1_57enr"]
 [ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="1_fyuur"]
 [ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="2_g4kbo"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_up.gd" id="3_4138y"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_down.gd" id="4_ku30f"]
+[ext_resource type="PackedScene" uid="uid://chgfmx4kv8sa3" path="res://Particles/shot_particles.tscn" id="4_pbth0"]
 
 [sub_resource type="Animation" id="Animation_qf2jc"]
 resource_name = "GetGun"
@@ -131,6 +132,9 @@ projectile_packed = ExtResource("2_g4kbo")
 [node name="ShotgunPlaceholder" parent="." instance=ExtResource("1_fyuur")]
 transform = Transform3D(-1.448e-06, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.448e-06, -0.942548, -0.31564, -1.5048)
 visible = false
+
+[node name="ShotParticles" parent="ShotgunPlaceholder" instance=ExtResource("4_pbth0")]
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, -1.22896, 0.715349, -4.52995e-06)
 
 [node name="ShotPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.943524, -0.0502683, -2.44249)
