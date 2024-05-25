@@ -42,5 +42,5 @@ func shoot() -> void:
 	projectile.shoot(shot_raycast.get_collision_point())
 	
 	current_ammo_count -= 1
-	shot_particles.emitting = true
-	smoke_particles.emitting = true
+	shot_particles.restart()
+	smoke_particles.restart()
