@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="2_g4kbo"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_up.gd" id="3_4138y"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_down.gd" id="4_ku30f"]
-[ext_resource type="PackedScene" uid="uid://chgfmx4kv8sa3" path="res://Particles/shot_particles.tscn" id="4_pbth0"]
+[ext_resource type="PackedScene" uid="uid://dtbwuw4kq0gp1" path="res://Particles/shot_particles.tscn" id="4_pbth0"]
 
 [sub_resource type="Animation" id="Animation_qf2jc"]
 resource_name = "GetGun"

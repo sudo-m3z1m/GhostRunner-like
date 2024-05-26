@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy0n3is12khbf"]
+[gd_scene load_steps=21 format=3 uid="uid://dy0n3is12khbf"]
 
 [ext_resource type="PackedScene" uid="uid://biuvsontnmu4h" path="res://Prefabs/enemy.tscn" id="1_shire"]
 [ext_resource type="Script" path="res://Prefabs/Enemies/turret.gd" id="2_fmk10"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://01koxue8yt48" path="res://Models/enemy.glb" id="4_a00dl"]
 [ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="4_a684d"]
 [ext_resource type="PackedScene" uid="uid://ci685wtqflj2q" path="res://Prefabs/corpse.tscn" id="5_3pwcl"]
-[ext_resource type="PackedScene" uid="uid://b1a6krvdxretf" path="res://Particles/blood_particles.tscn" id="7_75pra"]
 
 [sub_resource type="Animation" id="Animation_5m3jj"]
 resource_name = "Armature|mixamo_com|Layer0"
@@ -1675,6 +1674,53 @@ states/Start/position = Vector2(239, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_sb2id")]
 graph_offset = Vector2(28, -60)
 
+[sub_resource type="Curve" id="Curve_u7f23"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5xm1s"]
+_data = [Vector2(0, 0.40566), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_trmax"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_eqs71"]
+curve_x = SubResource("Curve_u7f23")
+curve_y = SubResource("Curve_5xm1s")
+curve_z = SubResource("Curve_trmax")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4jxrd"]
+radial_velocity_min = 3.0
+radial_velocity_max = 9.0
+gravity = Vector3(0, -4, 0)
+scale_min = 0.4
+scale_max = 1.5
+scale_curve = SubResource("CurveXYZTexture_eqs71")
+color = Color(0.772549, 0, 0, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_4red6"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_h862u"]
+material = SubResource("ORMMaterial3D_4red6")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="PackedScene" id="PackedScene_osb1e"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("BloodParticles", "emitting", "amount", "lifetime", "one_shot", "explosiveness", "process_material", "draw_pass_1", "GPUParticles3D"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 8, 0, -1, 7, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0),
+"variants": [false, 16, 5.0, true, 1.0, SubResource("ParticleProcessMaterial_4jxrd"), SubResource("SphereMesh_h862u")],
+"version": 3
+}
+
 [node name="Turret" instance=ExtResource("1_shire")]
 script = ExtResource("2_fmk10")
 cooldown = 2.0
@@ -1852,7 +1898,7 @@ anim_player = NodePath("../enemy/AnimationPlayer")
 knockback_time = 0.1
 knockback_strength = 50.0
 corpse_packed = ExtResource("5_3pwcl")
-blood_particles_packed = ExtResource("7_75pra")
+blood_particles_packed = SubResource("PackedScene_osb1e")
 max_y_direction = 0.5
 max_health_points = 1
 

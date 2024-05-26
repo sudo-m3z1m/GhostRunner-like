@@ -1,15 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://chgfmx4kv8sa3"]
+[gd_scene load_steps=20 format=3 uid="uid://dtbwuw4kq0gp1"]
+
+[ext_resource type="PackedScene" uid="uid://c8yt2yjih0x3x" path="res://Particles/particles.tscn" id="1_hcv4p"]
 
 [sub_resource type="Gradient" id="Gradient_be70y"]
 offsets = PackedFloat32Array(0.00395257, 0.679842)
-colors = PackedColorArray(0.873886, 0.460951, 7.70092e-07, 1, 1, 0, 0, 1)
+colors = PackedColorArray(0.87451, 0.270588, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fmwd8"]
 gradient = SubResource("Gradient_be70y")
 
 [sub_resource type="Curve" id="Curve_k3bfe"]
 max_value = 2.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.72242, 2), 2.56543, 2.56543, 0, 0, Vector2(1, 0.981132), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.747331, 1.49057), 2.56543, 2.56543, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_1swtb"]
@@ -43,31 +45,31 @@ scale_curve = SubResource("CurveTexture_gf6iq")
 color_ramp = SubResource("GradientTexture1D_fmwd8")
 emission_curve = SubResource("CurveTexture_1swtb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu1ta"]
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cbd8k"]
 vertex_color_use_as_albedo = true
 emission_enabled = true
-emission = Color(0.698039, 0, 0, 1)
-emission_energy_multiplier = 3.0
+emission = Color(0.854902, 0, 0, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_0p02u"]
-material = SubResource("StandardMaterial3D_eu1ta")
+material = SubResource("ORMMaterial3D_cbd8k")
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="Gradient" id="Gradient_y33pk"]
+[sub_resource type="Gradient" id="Gradient_6mlv8"]
 offsets = PackedFloat32Array(0, 0.6917)
 colors = PackedColorArray(0.325549, 0.0537679, 0, 1, 0.0881494, 0.04464, 0.023037, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ibyrx"]
-gradient = SubResource("Gradient_y33pk")
+gradient = SubResource("Gradient_6mlv8")
 
-[sub_resource type="Curve" id="Curve_qfbos"]
+[sub_resource type="Curve" id="Curve_8o1jl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.654804, 0.386792), -2.08288, -2.08288, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_yah5w"]
-curve = SubResource("Curve_qfbos")
+curve = SubResource("Curve_8o1jl")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wxlk1"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dyobr"]
 direction = Vector3(0, 0, 0)
 spread = 180.0
 initial_velocity_min = 0.5
@@ -81,14 +83,14 @@ color_ramp = SubResource("GradientTexture1D_ibyrx")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxvcg"]
 vertex_color_use_as_albedo = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_vts8v"]
+[sub_resource type="SphereMesh" id="SphereMesh_wp0kn"]
 material = SubResource("StandardMaterial3D_kxvcg")
 radius = 0.3
 height = 0.6
 radial_segments = 32
 rings = 16
 
-[node name="ShotParticles" type="GPUParticles3D"]
+[node name="Particles" instance=ExtResource("1_hcv4p")]
 process_mode = 3
 emitting = false
 amount = 128
@@ -97,10 +99,10 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_af6l5")
 draw_pass_1 = SubResource("BoxMesh_0p02u")
 
-[node name="SmokeParticles" type="GPUParticles3D" parent="."]
+[node name="SmokeParticles" type="GPUParticles3D" parent="." index="0"]
 emitting = false
 amount = 16
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_wxlk1")
-draw_pass_1 = SubResource("SphereMesh_vts8v")
+process_material = SubResource("ParticleProcessMaterial_dyobr")
+draw_pass_1 = SubResource("SphereMesh_wp0kn")

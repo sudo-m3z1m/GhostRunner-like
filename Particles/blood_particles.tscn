@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1a6krvdxretf"]
+[gd_scene load_steps=9 format=3 uid="uid://cxsp27hpn7pyh"]
+
+[ext_resource type="PackedScene" uid="uid://c8yt2yjih0x3x" path="res://Particles/particles.tscn" id="1_x1urm"]
 
 [sub_resource type="Curve" id="Curve_u7f23"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -34,11 +36,9 @@ material = SubResource("ORMMaterial3D_4red6")
 radius = 0.25
 height = 0.5
 
-[node name="BloodParticles" type="GPUParticles3D"]
-emitting = false
+[node name="Particles" instance=ExtResource("1_x1urm")]
 amount = 16
 lifetime = 5.0
-one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4jxrd")
 draw_pass_1 = SubResource("SphereMesh_h862u")
