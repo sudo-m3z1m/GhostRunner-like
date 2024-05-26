@@ -3,6 +3,7 @@ extends HealthComponent
 @export var knockback_time: float
 @export var knockback_strength: float
 @export var corpse_packed: PackedScene
+@export var blood_particles_packed: PackedScene
 @export_range(0, 1) var max_y_direction: float
 
 func apply_damage(damage: int, knockback_direction: Vector3 = Vector3.ZERO) -> void:
@@ -11,8 +12,14 @@ func apply_damage(damage: int, knockback_direction: Vector3 = Vector3.ZERO) -> v
 
 func die(knockback_direction: Vector3 = Vector3.ZERO) -> void:
 	var corpse: RigidBody3D = create_corpse()
+	var blood_particles: GPUParticles3D = blood_particles_packed.instantiate()
+
 	corpse.global_position = global_position
 	corpse.apply_central_impulse((knockback_direction) * knockback_strength)
+
+	get_tree().current_scene.add_child(blood_particles)
+	blood_particles.global_position = corpse.global_position
+	blood_particles.restart()
 
 	target.queue_free()
 
