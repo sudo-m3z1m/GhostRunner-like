@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5jje0xxyvw06"]
+
+[ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="1_g5y1j"]
+[ext_resource type="Texture2D" uid="uid://b5xbmnawgdjdp" path="res://Models/shotgun_placeholder_gun_low_Material_BaseColor.png" id="2_g6m0y"]
+[ext_resource type="Texture2D" uid="uid://dro7wv4w5wnic" path="res://Models/shotgun_placeholder_gun_low_Material_Metallic-gun_low_Material_Roughness.png" id="3_7a16j"]
+[ext_resource type="Texture2D" uid="uid://yn6rqiy16cmj" path="res://Models/shotgun_placeholder_gun_low_Material_Normal.png" id="4_e1w2n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kp22"]
+no_depth_test = true
+albedo_texture = ExtResource("2_g6m0y")
+metallic = 1.0
+metallic_texture = ExtResource("3_7a16j")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_7a16j")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("4_e1w2n")
+
+[node name="shotgun_placeholder" instance=ExtResource("1_g5y1j")]
+
+[node name="Cube_low" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Main_cyl_low" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Gun_cap_low" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Gun_low" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Cyl_low" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Gun_seam_low" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Trigger_block_low" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Hammer_low" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Handle_low" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Handle_cap_low" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Ring_low" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Handle_bolt_low" parent="." index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Main_cap2_low" parent="." index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Main_cap_low" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Another_ammo_bolt_low" parent="." index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Another ammo_bolts_low" parent="." index="15"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Ammo_bolt_low" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Another_cyl_low" parent="." index="17"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Trigger_low" parent="." index="18"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Fuse_low" parent="." index="19"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Bolt_low" parent="." index="20"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Ammo_low" parent="." index="21"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
+
+[node name="Ammo_cyl_low" parent="." index="22"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7kp22")
