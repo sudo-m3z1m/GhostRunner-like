@@ -130,7 +130,7 @@ shoot_animation = "Shoot"
 projectile_packed = ExtResource("2_g4kbo")
 
 [node name="ShotgunPlaceholder" parent="." instance=ExtResource("3_q2pno")]
-transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -0.942548, -0.31564, -1.5048)
+transform = Transform3D(-1.448e-06, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.448e-06, -0.942548, -0.31564, -1.5048)
 visible = false
 
 [node name="ShotParticles" parent="ShotgunPlaceholder" instance=ExtResource("4_pbth0")]
