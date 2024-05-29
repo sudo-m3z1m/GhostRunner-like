@@ -7,11 +7,9 @@ class_name Gun
 @export var projectile_packed: PackedScene
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var shot_position: Marker3D = $ShotPosition
+@onready var shot_position: Marker3D = $shotgun_placeholder/ShotPosition
 @onready var shot_raycast: RayCast3D = $ShotRaycast
 @onready var current_ammo_count: int = max_ammo_count
-@onready var shot_particles: GPUParticles3D = $ShotgunPlaceholder/ShotParticles
-@onready var smoke_particles: GPUParticles3D = shot_particles.get_node("SmokeParticles")
 @onready var states: Dictionary = {
 	GUN_STATES.GET_UP: $GetUpState,
 	GUN_STATES.GET_DOWN: $GetDownState
@@ -42,5 +40,3 @@ func shoot() -> void:
 	projectile.shoot(shot_raycast.get_collision_point())
 	
 	current_ammo_count -= 1
-	shot_particles.restart()
-	smoke_particles.restart()

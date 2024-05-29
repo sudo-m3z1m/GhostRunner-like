@@ -1,120 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://davpidau2xuae"]
+[gd_scene load_steps=10 format=3 uid="uid://davpidau2xuae"]
 
 [ext_resource type="Script" path="res://Prefabs/CharacterController/gun.gd" id="1_57enr"]
 [ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="2_g4kbo"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_up.gd" id="3_4138y"]
-[ext_resource type="PackedScene" uid="uid://c5jje0xxyvw06" path="res://Models/shotgun_placeholder.tscn" id="3_q2pno"]
+[ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="3_x5tsa"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_down.gd" id="4_ku30f"]
-[ext_resource type="PackedScene" uid="uid://dtbwuw4kq0gp1" path="res://Particles/shot_particles.tscn" id="4_pbth0"]
 
 [sub_resource type="Animation" id="Animation_qf2jc"]
 resource_name = "GetGun"
 length = 0.3
 step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ShotgunPlaceholder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.943, -2.5, -1.505), Vector3(-0.942548, -0.31564, -1.5048)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ShotgunPlaceholder:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(2.22045e-15, 1.5708, -1.0472), Vector3(0, 1.5708, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ShotgunPlaceholder:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.01),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 
 [sub_resource type="Animation" id="Animation_phwdn"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ShotgunPlaceholder:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ShotgunPlaceholder:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ShotgunPlaceholder:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.942548, -0.31564, -1.5048)]
-}
 
 [sub_resource type="Animation" id="Animation_tmv0s"]
 resource_name = "Shoot"
 length = 0.2
 step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ShotgunPlaceholder:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 1.5708), Vector3(0, 1.5708, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ShotgunPlaceholder:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.942548, -0.31564, -1.5048), Vector3(-0.942548, -0.31564, 0.50894), Vector3(-0.942548, -0.31564, -1.5048)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cb52p"]
 _data = {
@@ -123,21 +26,17 @@ _data = {
 "Shoot": SubResource("Animation_tmv0s")
 }
 
-[node name="Gun" type="Node3D"]
+[node name="PlayerWeapon" type="Node3D"]
 script = ExtResource("1_57enr")
 max_ammo_count = 3
 shoot_animation = "Shoot"
 projectile_packed = ExtResource("2_g4kbo")
 
-[node name="ShotgunPlaceholder" parent="." instance=ExtResource("3_q2pno")]
-transform = Transform3D(-1.448e-06, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.448e-06, -0.942548, -0.31564, -1.5048)
-visible = false
+[node name="shotgun_placeholder" parent="." instance=ExtResource("3_x5tsa")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
 
-[node name="ShotParticles" parent="ShotgunPlaceholder" instance=ExtResource("4_pbth0")]
-transform = Transform3D(-4.37012e-08, 0, -1, 0, 1, 0, 1, 0, -4.37012e-08, -1.22896, 0.715349, -2.38419e-07)
-
-[node name="ShotPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.943524, -0.0502683, -2.44249)
+[node name="ShotPosition" type="Marker3D" parent="shotgun_placeholder"]
+transform = Transform3D(2.5, 0, 2.13163e-14, 0, 2.5, 0, -2.13163e-14, 0, 2.5, 2.35202, 0.668375, 1.0281e-07)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
