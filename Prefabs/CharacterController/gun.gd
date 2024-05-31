@@ -10,6 +10,7 @@ class_name Gun
 @onready var shot_position: Marker3D = $shotgun_placeholder/ShotPosition
 @onready var shot_raycast: RayCast3D = $ShotRaycast
 @onready var current_ammo_count: int = max_ammo_count
+@onready var particles_component: ParticlesComponent = $ParticlesComponent
 @onready var states: Dictionary = {
 	GUN_STATES.GET_UP: $GetUpState,
 	GUN_STATES.GET_DOWN: $GetDownState
@@ -38,5 +39,7 @@ func shoot() -> void:
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = shot_position.global_position
 	projectile.shoot(shot_raycast.get_collision_point())
+	
+	particles_component.show_particle(shot_position.global_position)
 	
 	current_ammo_count -= 1

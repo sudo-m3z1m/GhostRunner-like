@@ -1,8 +1,10 @@
 extends Node3D
 
-#@onready var particles: Array[Node3D] = get_children()
+class_name ParticlesComponent
 
 @export var particles: Array[GPUParticles3D]
+
+#@onready var particles: Array[Node3D] = get_children()
 
 var current_particle_index: int = 0
 

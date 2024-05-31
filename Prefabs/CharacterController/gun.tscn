@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://davpidau2xuae"]
+[gd_scene load_steps=12 format=3 uid="uid://davpidau2xuae"]
 
 [ext_resource type="Script" path="res://Prefabs/CharacterController/gun.gd" id="1_57enr"]
 [ext_resource type="PackedScene" uid="uid://67ql60iex6b5" path="res://Prefabs/projectile.tscn" id="2_g4kbo"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_up.gd" id="3_4138y"]
 [ext_resource type="PackedScene" uid="uid://obeq51nq4hju" path="res://Models/shotgun_placeholder.glb" id="3_x5tsa"]
+[ext_resource type="PackedScene" uid="uid://1w178uapm8q7" path="res://Particles/particles_component.tscn" id="4_67xjg"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/GunStates/get_down.gd" id="4_ku30f"]
+[ext_resource type="PackedScene" uid="uid://dtbwuw4kq0gp1" path="res://Particles/shot_particles.tscn" id="5_vdfwd"]
 
 [sub_resource type="Animation" id="Animation_qf2jc"]
 resource_name = "GetGun"
@@ -37,6 +39,15 @@ transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-0
 
 [node name="ShotPosition" type="Marker3D" parent="shotgun_placeholder"]
 transform = Transform3D(2.5, 0, 2.13163e-14, 0, 2.5, 0, -2.13163e-14, 0, 2.5, 2.35202, 0.668375, 1.0281e-07)
+
+[node name="ParticlesComponent" parent="." node_paths=PackedStringArray("particles") instance=ExtResource("4_67xjg")]
+particles = [NodePath("Particles"), NodePath("Particles2"), NodePath("Particles3")]
+
+[node name="Particles" parent="ParticlesComponent" instance=ExtResource("5_vdfwd")]
+
+[node name="Particles2" parent="ParticlesComponent" instance=ExtResource("5_vdfwd")]
+
+[node name="Particles3" parent="ParticlesComponent" instance=ExtResource("5_vdfwd")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
