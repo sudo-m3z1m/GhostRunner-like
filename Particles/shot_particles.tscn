@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtbwuw4kq0gp1"]
+[gd_scene load_steps=21 format=3 uid="uid://dtbwuw4kq0gp1"]
 
 [ext_resource type="PackedScene" uid="uid://c8yt2yjih0x3x" path="res://Particles/particles.tscn" id="1_hcv4p"]
 
@@ -55,6 +55,14 @@ emission_energy_multiplier = 2.0
 material = SubResource("ORMMaterial3D_cbd8k")
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="GDScript" id="GDScript_744t4"]
+script/source = "extends Particles
+
+func start_particles() -> void:
+	super()
+	
+"
+
 [sub_resource type="Gradient" id="Gradient_6mlv8"]
 offsets = PackedFloat32Array(0, 0.6917)
 colors = PackedColorArray(0.325549, 0.0537679, 0, 1, 0.0881494, 0.04464, 0.023037, 1)
@@ -90,7 +98,7 @@ height = 0.6
 radial_segments = 32
 rings = 16
 
-[node name="Particles" instance=ExtResource("1_hcv4p")]
+[node name="ShotParticles" node_paths=PackedStringArray("additional_particles") instance=ExtResource("1_hcv4p")]
 process_mode = 3
 emitting = false
 amount = 128
@@ -98,6 +106,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_af6l5")
 draw_pass_1 = SubResource("BoxMesh_0p02u")
+script = SubResource("GDScript_744t4")
+additional_particles = [NodePath("SmokeParticles")]
 
 [node name="SmokeParticles" type="GPUParticles3D" parent="." index="0"]
 emitting = false

@@ -1826,7 +1826,7 @@ bones/63/scale = Vector3(1, 1, 1)
 bones/64/position = Vector3(-6.22869e-06, 36.5869, -3.12925e-07)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="enemy/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.0677761, 0.0705758, 0.995201, 0.0823529, 0.994487, -0.0649163, -0.994296, 0.0775579, -0.0732147, -116.626, 120.301, -779.639)
+transform = Transform3D(-0.0677762, 0.0705765, 0.995202, 0.0823515, 0.994487, -0.064917, -0.994296, 0.0775565, -0.0732149, -116.627, 120.301, -779.638)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 

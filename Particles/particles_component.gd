@@ -16,7 +16,7 @@ func show_particle(particle_new_position: Vector3) -> void:
 	current_particle = particles[current_particle_index]
 	
 	current_particle.global_position = particle_new_position
-	current_particle.restart()
+	current_particle.start_particles()
 
 func get_particle_index(particle: GPUParticles3D) -> int:
 	return particles.find(particle)
