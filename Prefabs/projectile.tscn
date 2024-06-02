@@ -1,18 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://67ql60iex6b5"]
+[gd_scene load_steps=4 format=3 uid="uid://67ql60iex6b5"]
 
 [ext_resource type="Script" path="res://Prefabs/projectile.gd" id="1_d3mbq"]
+[ext_resource type="PackedScene" uid="uid://dq7q1kvyrjaci" path="res://Models/bullet.glb" id="2_85n37"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7k0yc"]
 radius = 0.12
 height = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjguc"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hld2u"]
-material = SubResource("StandardMaterial3D_jjguc")
-radius = 0.1
-height = 0.5
 
 [node name="Projectile" type="CharacterBody3D"]
 script = ExtResource("1_d3mbq")
@@ -24,10 +17,6 @@ damage = 1
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7k0yc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_hld2u")
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HurtBoxArea" type="Area3D" parent="."]
@@ -35,3 +24,6 @@ mesh = SubResource("CapsuleMesh_hld2u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7k0yc")
+
+[node name="bullet" parent="." instance=ExtResource("2_85n37")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.154164)

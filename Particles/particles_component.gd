@@ -10,7 +10,7 @@ var current_particle_index: int = 0
 
 func show_particle(particle_new_position: Vector3) -> void:
 	var current_particle: GPUParticles3D
-	
+
 	current_particle_index += 1
 	current_particle_index %= particles.size()
 	current_particle = particles[current_particle_index]
