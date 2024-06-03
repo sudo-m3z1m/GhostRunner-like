@@ -9,6 +9,10 @@ var direction: Vector3
 func enter_state(target: Player) -> void:
 	super(target)
 	animation_player.play(animation)
+	var particles_position: Vector3
+	particles_position = target.global_position
+	particles_position.y -= 1
+	target.particles_component.show_particle(particles_position)
 
 func update_state(delta: float) -> void:
 	target.is_falling()
