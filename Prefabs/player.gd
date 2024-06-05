@@ -8,18 +8,17 @@ class_name Player
 @export var max_angle: float
 @export var max_jump_count: int
 
-@onready var camera: Camera3D = $CameraPivot/Camera3D
-@onready var weapon_camera: Camera3D = $CameraPivot/SubViewportContainer/SubViewport/WeaponCamera
-@onready var camera_pivot: Node3D = $CameraPivot
+@onready var camera: Camera3D = $Camera3D
+@onready var weapon_camera: Camera3D = $Camera3D/SubViewportContainer/SubViewport/WeaponCamera
 @onready var input_handler: InputHandler = $InputHandler
 @onready var state_machine: StateMachine = $StateMachine
 @onready var raycasts: Array[Node] = $Raycasts.get_children()
 @onready var raycasts_pivot: Node3D = $Raycasts
 @onready var particles_component: ParticlesComponent = $ParticlesComponent
-@onready var attack_area: Area3D = $CameraPivot/Camera3D/AttackArea
+@onready var attack_area: Area3D = $Camera3D/AttackArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_component: HealthComponent = $HealthComponent
-@onready var gun: Gun = $CameraPivot/Camera3D/Gun
+@onready var gun: Gun = $Camera3D/Gun
 
 var jump_count: int = max_jump_count
 var prev_raycasts_states: Array[bool] = [false, false]
