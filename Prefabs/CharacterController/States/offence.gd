@@ -38,5 +38,3 @@ func is_area_trigerred() -> void:
 		if entity is Enemy:
 			entity.health_component.apply_damage(attack_damage, knockback_direction)
 			attack_state.change_attack_state()
-		if entity is Projectile:
-			entity.shoot(target.gun.shot_raycast.get_collision_point())
