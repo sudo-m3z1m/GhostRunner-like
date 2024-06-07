@@ -2,7 +2,6 @@ extends GunState
 
 func enter_state(target: Player) -> void:
 	super(target)
-	#state_machine.change_time_state(StateMachine.STATES.SLOWED_TIME)
 	animation_player.queue(animation)
 	gun.current_ammo_count = gun.max_ammo_count
 
