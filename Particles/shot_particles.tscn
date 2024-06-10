@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtbwuw4kq0gp1"]
+[gd_scene load_steps=22 format=3 uid="uid://dtbwuw4kq0gp1"]
 
 [ext_resource type="PackedScene" uid="uid://c8yt2yjih0x3x" path="res://Particles/particles.tscn" id="1_hcv4p"]
 
@@ -45,15 +45,26 @@ scale_curve = SubResource("CurveTexture_gf6iq")
 color_ramp = SubResource("GradientTexture1D_fmwd8")
 emission_curve = SubResource("CurveTexture_1swtb")
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cbd8k"]
-vertex_color_use_as_albedo = true
-emission_enabled = true
-emission = Color(0.854902, 0, 0, 1)
-emission_energy_multiplier = 2.0
+[sub_resource type="Gradient" id="Gradient_mt801"]
+colors = PackedColorArray(1, 1, 1, 1, 0.4, 0, 0, 0)
 
-[sub_resource type="BoxMesh" id="BoxMesh_0p02u"]
-material = SubResource("ORMMaterial3D_cbd8k")
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nkqkc"]
+gradient = SubResource("Gradient_mt801")
+fill = 1
+fill_from = Vector2(0.504274, 0.474359)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_su244"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_nkqkc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_80ppa"]
+material = SubResource("ORMMaterial3D_su244")
+size = Vector2(0.7, 0.7)
+orientation = 2
 
 [sub_resource type="Gradient" id="Gradient_6mlv8"]
 offsets = PackedFloat32Array(0, 0.6917)
@@ -93,11 +104,13 @@ rings = 16
 [node name="ShotParticles" node_paths=PackedStringArray("additional_particles") instance=ExtResource("1_hcv4p")]
 process_mode = 3
 emitting = false
-amount = 128
+amount = 64
 one_shot = true
 explosiveness = 1.0
+transform_align = 1
+trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_af6l5")
-draw_pass_1 = SubResource("BoxMesh_0p02u")
+draw_pass_1 = SubResource("PlaneMesh_80ppa")
 additional_particles = [NodePath("SmokeParticles")]
 
 [node name="SmokeParticles" type="GPUParticles3D" parent="." index="0"]
