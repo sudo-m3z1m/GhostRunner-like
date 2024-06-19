@@ -1,6 +1,8 @@
 extends Node
 class_name WeaponStateMachine
 
+@onready var target: Weapon = get_parent()
+
 func _process(delta: float) -> void:
 	pass
 

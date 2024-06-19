@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Prefabs/Weapons/weapon.gd" id="1_bv1y2"]
 [ext_resource type="Script" path="res://Prefabs/Weapons/weapons_state_machine.gd" id="2_b7pk3"]
 
-[node name="PhysicsWeapon" type="RigidBody3D"]
+[node name="Weapon" type="RigidBody3D"]
 script = ExtResource("1_bv1y2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
