@@ -12,8 +12,6 @@ var actions_array: Array[String] = [
 	"Shift",
 	"Escape",
 	"Attack",
-	"GetWeapon",
-	"AlternativeAttack"
 ]
 
 var move_actions_array: Array[String] = [
@@ -62,7 +60,3 @@ func get_action(action: String) -> void:
 			HUD.pause_clicked()
 		"Attack":
 			state_machine.change_state(StateMachine.STATES.ATTACK)
-		"GetWeapon":
-			target.gun.change_state(Gun.GUN_STATES.GET_UP)
-		"AlternativeAttack":
-			target.gun.shoot()
