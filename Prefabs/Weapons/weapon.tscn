@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6kil12aqalu1"]
+
+[ext_resource type="Script" path="res://Prefabs/Weapons/weapon.gd" id="1_bv1y2"]
+[ext_resource type="Script" path="res://Prefabs/Weapons/weapons_state_machine.gd" id="2_b7pk3"]
+
+[node name="PhysicsWeapon" type="RigidBody3D"]
+script = ExtResource("1_bv1y2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059021, -0.124084, 0)
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_b7pk3")

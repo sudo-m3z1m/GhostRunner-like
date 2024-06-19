@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bljjoykcp0swp"]
+[gd_scene load_steps=28 format=3 uid="uid://bljjoykcp0swp"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_p0jtv"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/input_handler.gd" id="2_qeet4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/jump.gd" id="6_4p4ke"]
 [ext_resource type="PackedScene" uid="uid://1w178uapm8q7" path="res://Particles/particles_component.tscn" id="6_l67et"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/dash.gd" id="7_kwa41"]
+[ext_resource type="Script" path="res://Prefabs/CharacterController/weapon_handler.gd" id="7_sbscv"]
 [ext_resource type="PackedScene" uid="uid://d1fcft2ed3jst" path="res://Particles/walk_particles.tscn" id="7_u2quj"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/falling.gd" id="8_5n6il"]
 [ext_resource type="Script" path="res://Prefabs/CharacterController/States/wallrun.gd" id="9_km4t3"]
@@ -206,6 +207,10 @@ shape = SubResource("BoxShape3D_w0ohi")
 [node name="katana" parent="Camera3D" instance=ExtResource("10_k4t41")]
 transform = Transform3D(-0.0996507, -0.00822365, 0.00145008, 2.76108e-10, 0.0173651, 0.0984808, -0.00835052, 0.0981367, -0.0173045, -0.000955343, -0.278167, -0.633316)
 
+[node name="WeaponPivot" type="Marker3D" parent="Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.511263, -0.278, -0.633)
+
 [node name="Raycasts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905895, -0.604244)
 
@@ -235,6 +240,9 @@ max_health_points = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00604272, 0)
 shape = SubResource("CapsuleShape3D_8pq4x")
+
+[node name="WeaponHandler" type="Node" parent="."]
+script = ExtResource("7_sbscv")
 
 [node name="InputHandler" type="Node" parent="."]
 process_mode = 3
