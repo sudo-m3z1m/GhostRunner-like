@@ -3,6 +3,8 @@ class_name WeaponStateMachine
 
 @onready var target: Weapon = get_parent()
 
+var current_state: WeaponState
+
 func _process(delta: float) -> void:
 	pass
 
