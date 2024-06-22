@@ -26,4 +26,5 @@ func attack() -> void:
 	pass
 
 func get_weapon() -> void:
-	pass
+	var new_state: WeaponState = states_array[StateIndices.READY].new()
+	state_machine.change_state(new_state)

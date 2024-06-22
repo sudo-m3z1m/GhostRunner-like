@@ -1,21 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://xsocltgjpdqs"]
+[gd_scene load_steps=7 format=3 uid="uid://xsocltgjpdqs"]
 
 [ext_resource type="PackedScene" uid="uid://b6kil12aqalu1" path="res://Prefabs/Weapons/weapon.tscn" id="1_0uqbm"]
 [ext_resource type="Script" path="res://Prefabs/Weapons/WeaponStates/throw_state.gd" id="2_0xls8"]
 [ext_resource type="PackedScene" uid="uid://ci8ocgjwyie0a" path="res://Models/shotgun.glb" id="2_ggsyj"]
+[ext_resource type="Script" path="res://Prefabs/Weapons/WeaponStates/ready_state.gd" id="2_jds4d"]
+[ext_resource type="Script" path="res://Prefabs/Weapons/WeaponStates/attack_state.gd" id="3_4lxy2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_17ble"]
-size = Vector3(1.8479, 0.375977, 0.150391)
+size = Vector3(1.89667, 0.406647, 0.150391)
 
 [node name="ShotGun" node_paths=PackedStringArray("model_animation_player") instance=ExtResource("1_0uqbm")]
+collision_layer = 2
+collision_mask = 2
 throw_damage = 15.0
 model_animation_player = NodePath("AnimationPlayer")
-states_array = Array[GDScript]([null, null, ExtResource("2_0xls8")])
+states_array = Array[GDScript]([ExtResource("2_jds4d"), ExtResource("3_4lxy2"), ExtResource("2_0xls8")])
 first_state = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.29835e-08, -0.12822, -0.297028)
 shape = SubResource("BoxShape3D_17ble")
 
 [node name="shotgun" parent="Model" index="0" instance=ExtResource("2_ggsyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90742, 0, 8.33761e-08)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
