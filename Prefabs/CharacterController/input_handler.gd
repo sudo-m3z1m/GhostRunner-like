@@ -6,6 +6,7 @@ class_name InputHandler
 
 @onready var target: Player = get_parent()
 @onready var state_machine: StateMachine = get_parent().get_node("StateMachine")
+@onready var weapon_handler: WeaponHandler = get_parent().get_node("WeaponHandler")
 
 var actions_array: Array[String] = [
 	"Space",
@@ -59,4 +60,5 @@ func get_action(action: String) -> void:
 		"Escape":
 			HUD.pause_clicked()
 		"Attack":
+			weapon_handler.current_weapon.attack()
 			state_machine.change_state(StateMachine.STATES.ATTACK)

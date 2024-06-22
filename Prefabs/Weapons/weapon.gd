@@ -23,7 +23,8 @@ func throw_self(direction: Vector3) -> void:
 	pass
 
 func attack() -> void:
-	pass
+	var new_state: WeaponState = states_array[StateIndices.ATTACK].new()
+	state_machine.change_state(new_state)
 
 func get_weapon() -> void:
 	var new_state: WeaponState = states_array[StateIndices.READY].new()
