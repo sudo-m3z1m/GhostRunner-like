@@ -16,9 +16,8 @@ enum StateIndices {
 }
 
 func _ready() -> void:
-	pass
-	#var new_state: WeaponState = states_array[first_state].new()
-	#state_machine.change_state(new_state)
+	var new_state: WeaponState = states_array[first_state].new()
+	state_machine.change_state(new_state)
 
 func throw_self(direction: Vector3) -> void:
 	pass

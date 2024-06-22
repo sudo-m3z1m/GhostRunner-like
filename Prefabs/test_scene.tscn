@@ -92,5 +92,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6513, 79.5388, 80.2847)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.164, 23.3327)
 
 [node name="ShotGun" parent="." instance=ExtResource("4_74sqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.0772, 73.0689)
-mass = 1.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25441, 131.666)

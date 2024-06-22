@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://xsocltgjpdqs"]
+[gd_scene load_steps=5 format=3 uid="uid://xsocltgjpdqs"]
 
 [ext_resource type="PackedScene" uid="uid://b6kil12aqalu1" path="res://Prefabs/Weapons/weapon.tscn" id="1_0uqbm"]
+[ext_resource type="Script" path="res://Prefabs/Weapons/WeaponStates/throw_state.gd" id="2_0xls8"]
 [ext_resource type="PackedScene" uid="uid://ci8ocgjwyie0a" path="res://Models/shotgun.glb" id="2_ggsyj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_17ble"]
 size = Vector3(1.8479, 0.375977, 0.150391)
 
-[node name="ShotGun" instance=ExtResource("1_0uqbm")]
+[node name="ShotGun" node_paths=PackedStringArray("model_animation_player") instance=ExtResource("1_0uqbm")]
+throw_damage = 15.0
+model_animation_player = NodePath("AnimationPlayer")
+states_array = Array[GDScript]([null, null, ExtResource("2_0xls8")])
+first_state = 2
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_17ble")
 
 [node name="shotgun" parent="Model" index="0" instance=ExtResource("2_ggsyj")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
