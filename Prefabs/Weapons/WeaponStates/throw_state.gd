@@ -5,7 +5,7 @@ func enter_state(target: Weapon, state_machine: WeaponStateMachine) -> void:
 	target.freeze = false
 
 func update_state(delta: float) -> void:
-	print("ThrowState")
+	pass
 
 func exit_state() -> void:
 	pass

@@ -12,7 +12,7 @@ var actions_array: Array[String] = [
 	"Space",
 	"Shift",
 	"Escape",
-	"Attack",
+	"Attack"
 ]
 
 var move_actions_array: Array[String] = [

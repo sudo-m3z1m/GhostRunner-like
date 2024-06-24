@@ -15,7 +15,6 @@ class_name Player
 @onready var raycasts: Array[Node] = $Raycasts.get_children()
 @onready var raycasts_pivot: Node3D = $Raycasts
 @onready var particles_component: ParticlesComponent = $ParticlesComponent
-@onready var attack_area: Area3D = $Camera3D/AttackArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_component: HealthComponent = $HealthComponent
 
