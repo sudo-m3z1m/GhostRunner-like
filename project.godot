@@ -19,6 +19,10 @@ config/icon="res://preview.png"
 
 HUD="*res://Prefabs/Hud/hud.tscn"
 
+[editor]
+
+movie_writer/movie_file="D:/GitProjects/GhostRunner_like/test.avi"
+
 [input]
 
 Forward={
